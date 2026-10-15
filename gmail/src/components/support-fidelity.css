@@ -1,0 +1,83 @@
+.gopen-support { font-family: "Drive Google Sans Text", Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: normal; outline: none; }
+.gopen-support *, .gopen-support *::before, .gopen-support *::after { box-sizing: border-box; }
+.gopen-support button { border: 0; background: transparent; padding: 0; font: inherit; color: inherit; }
+.gopen-support .gopen-support-glyph { display: block; flex: none; width: 24px; height: 24px; fill: currentColor; }
+.gopen-support .gopen-support-icon-button { display: flex; align-items: center; justify-content: center; flex: none; width: 48px; height: 48px; border-radius: 50%; }
+.gopen-support .gopen-support-icon-button:hover { background: rgba(128, 134, 139, .12); }
+.gopen-support-help-root { position: fixed; inset: 0; pointer-events: none; z-index: 1000; color: #1f1f1f; color-scheme: light; }
+.gopen-support-help { position: absolute; top: 138px; right: 22px; width: 360px; height: 714px; max-width: calc(100vw - 24px); max-height: calc(100vh - 150px); display: flex; flex-direction: column; border-radius: 16px; background: #fff; pointer-events: auto; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, .2); }
+.gopen-support-help-header { height: 56px; flex: none; position: relative; padding: 0 8px; }
+.gopen-support-help-header h1 { font-family: "Google Sans", Arial, sans-serif; font-size: 22px; line-height: 32px; font-weight: 400; padding-top: 16px; margin: 0 40px; text-align: center; }
+.gopen-support-help-close { position: absolute; right: 8px; top: 12px; color: #444746 !important; }
+.gopen-support-help-back { position: absolute; left: 8px; top: 12px; }
+.gopen-support-help-scroll { flex: 1; min-height: 0; overflow: auto; }
+.gopen-support-help-heading { font-family: "Google Sans", Arial, sans-serif; font-size: 16px; line-height: 20px; font-weight: 500; height: 44px; margin: 0; padding: 16px 16px 8px; }
+.gopen-support .gopen-support-resource { display: flex; position: relative; text-align: left; width: 100%; min-height: 54px; padding: 14px 16px 16px 64px; line-height: 24px; }
+.gopen-support-resource:hover, .gopen-support-community:hover, .gopen-support-help-feedback:hover { background: #f2f2f2; }
+.gopen-support-help-circle { position: absolute; left: 16px; top: 8px; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: #ecf3fe; color: #1a73e8; }
+.gopen-support-help-circle .gopen-support-glyph { width: 18px; height: 18px; }
+.gopen-support .gopen-support-forum { display: block; text-align: left; width: 100%; height: 52.5px; padding: 20px 0 16px 66.4px; font-size: 14px; font-weight: 500; line-height: 16px; color: #0b57d0; }
+.gopen-support-help-search-wrap { padding: 10.4px 16px 16px; }
+.gopen-support .gopen-support-help-search { display: flex; align-items: center; gap: 20px; width: 100%; height: 48px; padding: 10px 16px; border: 1px solid transparent; border-radius: 48px; background: #f2f2f2; color: #444746; font-family: "Google Sans", Arial, sans-serif; }
+.gopen-support-help-search .gopen-support-glyph { color: #1f1f1f; }
+.gopen-support-help-divider { height: 8px; background: #f2f2f2; }
+.gopen-support .gopen-support-community { display: flex; width: 100%; height: 76px; position: relative; padding: 16px 16px 16px 64px; text-align: left; font-family: "Google Sans", Arial, sans-serif; font-weight: 500; }
+.gopen-support-community small { display: block; font-family: "Drive Google Sans Text", Arial, sans-serif; font-size: 14px; font-weight: 400; color: #444746; line-height: 20px; }
+.gopen-support-community .gopen-support-help-circle, .gopen-support-help-feedback .gopen-support-help-circle { top: 16px; background: #f2f2f2; color: #0b57d0; }
+.gopen-support .gopen-support-help-feedback { position: relative; display: block; width: 100%; height: 57px; padding: 16px 16px 16px 64px; text-align: left; color: #0b57d0; font-weight: 500; }
+.gopen-support-help-feedback .gopen-support-help-circle { top: 12px; }
+.gopen-support-help-query { width: calc(100% - 32px); margin: 16px; padding: 12px; color: #1f1f1f; background: #f2f2f2; border: 1px solid #747775; border-radius: 24px; }
+.gopen-support-demo-article { padding: 16px; }
+.gopen-support-demo-article h2 { font-size: 18px; font-weight: 400; }
+.gopen-support-feedback-backdrop { position: fixed; inset: 0; z-index: 1001; background: rgba(128, 134, 139, .5); color: #e3e3e3; color-scheme: dark; }
+.gopen-support-feedback { position: absolute; right: 0; top: 0; width: 412px; max-width: 100vw; height: 100%; display: flex; flex-direction: column; background: #1f1f1f; border-radius: 8px 0 0 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 4px 8px 3px rgba(0, 0, 0, .15); overflow: hidden; }
+.gopen-support-feedback-header { display: flex; align-items: center; flex: none; height: 60.11px; padding: 8px 20px 4px; gap: 4px; }
+.gopen-support-feedback-header h1 { margin: 0; flex: 1; font-family: "Google Sans", Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 24px; letter-spacing: .1px; }
+.gopen-support-feedback-header .gopen-support-icon-button { color: #c4c7c5; }
+.gopen-support-feedback-form .gopen-support-feedback-header { padding-left: 4px; padding-right: 8px; border-bottom: 2px solid #171717; }
+.gopen-support-feedback-form .gopen-support-icon-button { color: #ababab; }
+.gopen-support-feedback-choices { flex: 1; overflow: auto; padding-top: 20px; }
+.gopen-support-feedback-illustration { display: block; width: 240px; height: 180.61px; margin: 0 auto; }
+.gopen-support-feedback-choices > button { display: flex; align-items: center; gap: 8px; padding-left: 20px; width: 100%; height: 60px; font-family: "Google Sans", Arial, sans-serif; font-weight: 500; letter-spacing: .171429px; text-align: left; color: #c4c7c5; border-radius: 4px; }
+.gopen-support-feedback-choices > button:hover { background: rgba(196, 199, 197, .08); }
+.gopen-support-intent-circle { width: 28px; height: 28px; border-radius: 50%; background: #d3e3fd; color: #455a64; display: flex; align-items: center; justify-content: center; }
+.gopen-support-intent-circle .gopen-support-glyph { width: 18px; height: 18px; }
+.gopen-support-feedback-content { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: auto; padding: 26.4px 16px 16px; font-size: 14px; line-height: 20px; letter-spacing: .2px; }
+.gopen-support-feedback-fields { flex: 1 0 auto; }
+.gopen-support-category { margin-bottom: 20.8px; }
+.gopen-support-category > label { display: block; margin-bottom: 10px; }
+.gopen-support-select { position: relative; }
+.gopen-support-select select { appearance: none; width: 100%; height: 56px; background: transparent; color: #e3e3e3; border: 1px solid #c4c7c5; border-radius: 4px; padding: 0 48px 0 15px; font: inherit; cursor: pointer; }
+.gopen-support-select option { background: #2d2d2d; color: #e3e3e3; }
+.gopen-support-select .gopen-support-glyph { position: absolute; pointer-events: none; right: 12px; top: 16px; color: #c4c7c5; }
+.gopen-support-description-label { display: block; margin-bottom: 10px; }
+.gopen-support-feedback textarea { display: block; width: 100%; height: 138px; resize: none; padding: 17px 16px; background: transparent; color: #e3e3e3; border: 1px solid #c4c7c5; border-radius: 4px; font-family: "Drive Google Sans Text", Arial, sans-serif; font-size: 16px; line-height: 20px; letter-spacing: .1px; }
+.gopen-support-feedback textarea::placeholder { font-size: 14px; letter-spacing: .2px; color: #c4c7c5; opacity: 1; }
+.gopen-support-feedback textarea:focus, .gopen-support-select select:focus { outline: 2px solid #7cacf8; outline-offset: -2px; }
+.gopen-support-sensitive { display: flex; align-items: center; gap: 8px; margin-top: 8px; color: #c4c7c5; font-size: 12px; line-height: 16px; letter-spacing: .3px; }
+.gopen-support-screenshot { margin-top: 24px; }
+.gopen-support-screenshot p { margin: 0 0 8px; }
+.gopen-support .gopen-support-outline { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 36px; border: 1px solid #8e918f; border-radius: 4px; color: #7cacf8; font-family: "Google Sans", Arial, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .15px; }
+.gopen-support-outline .gopen-support-glyph { width: 18px; height: 18px; }
+.gopen-support-blank-preview { height: 160px; margin-top: 12px; background: #fff; display: flex; align-items: center; justify-content: center; color: #747775; border: 1px solid #8e918f; border-radius: 4px; }
+.gopen-support-feedback-bottom { flex: none; margin-top: 24px; }
+.gopen-support-checkbox { display: flex; align-items: center; position: relative; min-height: 48px; gap: 12px; color: #c4c7c5; font-size: 14px; line-height: 24px; letter-spacing: .1px; cursor: pointer; }
+.gopen-support-checkbox input { position: absolute; left: 4px; width: 24px; height: 24px; opacity: 0; cursor: pointer; }
+.gopen-support-checkbox-box { display: flex; align-items: center; justify-content: center; flex: none; width: 18px; height: 18px; margin-left: 7px; border: 2px solid #c4c7c5; border-radius: 2px; }
+.gopen-support-checkbox-box svg { display: none; width: 16px; height: 16px; fill: none; stroke: #1f1f1f; stroke-width: 3.12px; }
+.gopen-support-checkbox input:checked + .gopen-support-checkbox-box { background: #7cacf8; border-color: #7cacf8; }
+.gopen-support-checkbox input:checked + .gopen-support-checkbox-box svg { display: block; }
+.gopen-support-checkbox input:focus-visible + .gopen-support-checkbox-box { outline: 2px solid #7cacf8; outline-offset: 4px; }
+.gopen-support-legal { margin: 0; padding: 12px 0; color: #c4c7c5; font-size: 12px; line-height: 14.4px; letter-spacing: .3px; text-align: justify; }
+.gopen-support-legal button { display: inline; color: #7cacf8; text-decoration: underline; font: inherit; }
+.gopen-support-feedback-footer { flex: none; height: 72px; padding: 20px 20px 16px; display: flex; justify-content: flex-end; border-top: 2px solid #171717; }
+.gopen-support .gopen-support-primary { display: inline-flex; justify-content: center; align-items: center; height: 36px; padding: 0 24px; border: 1px solid transparent; border-radius: 4px; background: #7cacf8; color: #1f1f1f; font-family: "Google Sans", Arial, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .15px; }
+.gopen-support .gopen-support-primary:disabled { opacity: 1; color: rgba(227, 227, 227, .72); background: rgba(227, 227, 227, .12); }
+.gopen-support-local-notice { padding: 20px; overflow-wrap: anywhere; }
+.gopen-support-local-notice h2 { font-size: 18px; font-weight: 400; }
+@media (max-width: 480px) {
+  .gopen-support-help { top: 72px; right: 12px; max-height: calc(100dvh - 84px); }
+  .gopen-support-feedback { border-radius: 0; }
+  .gopen-support-checkbox { gap: 8px; }
+  .gopen-support-feedback textarea::placeholder { font-size: 16px; }
+}

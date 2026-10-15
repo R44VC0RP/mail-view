@@ -1,0 +1,239 @@
+.gmail-settings-view {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  background: #2c2c2c;
+  color: #202124;
+  color-scheme: light;
+  font: 14px/20px "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+.gmail-settings-heading {
+  display: flex;
+  align-items: center;
+  flex: 0 0 48px;
+  height: 48px;
+  padding: 0 16px;
+  background: #2c2c2c;
+  color: #eee;
+}
+
+.gmail-settings-heading h1 {
+  margin: 0;
+  font: 400 22px/28px "Google Sans", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.gmail-settings-tabs {
+  display: flex;
+  flex: 0 0 40px;
+  align-items: stretch;
+  height: 40px;
+  margin-right: 16px;
+  padding-left: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #fff;
+  box-shadow: inset 0 -1px #edeef0;
+  scrollbar-width: none;
+}
+
+.gmail-settings-tabs::-webkit-scrollbar { display: none; }
+.gmail-settings-tabs button {
+  flex: none;
+  height: 40px;
+  padding: 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: #fff;
+  color: #666;
+  font: 500 14px/20px "Google Sans", Roboto, Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+}
+.gmail-settings-tabs button:disabled { opacity: 1; }
+.gmail-settings-tabs button[aria-selected="true"] { color: #2979ff; border-bottom-color: #2979ff; }
+.gmail-settings-tabs button:hover:not(:disabled) { background: #f8f9fa; }
+
+.gmail-settings-scroll {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  background: #f4f4f4;
+}
+.gmail-settings-scroll::-webkit-scrollbar { width: 16px; height: 16px; }
+.gmail-settings-scroll::-webkit-scrollbar-thumb { background: #777; border: 1px solid #2b2b2b; }
+.gmail-settings-scroll::-webkit-scrollbar-track { background: #2b2b2b; }
+.gmail-settings-labels-body { min-height: 100%; padding: 0 49px 24px 24px; }
+.gmail-settings-labels-table {
+  width: 100%;
+  min-width: 820px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background: #fff;
+  color: #202124;
+  font: inherit;
+}
+.gmail-settings-col-name { width: 20%; }
+.gmail-settings-col-label { width: 27%; }
+.gmail-settings-col-message { width: 20%; }
+.gmail-settings-col-action { width: 15%; }
+.gmail-settings-labels-table td { padding: 9px 15px; vertical-align: top; }
+.gmail-settings-labels-table td:first-child { padding: 3px 15px; }
+.gmail-settings-labels-table th { text-align: left; font-weight: 700; }
+.gmail-settings-label-heading { height: 34px; }
+.gmail-settings-label-heading th { padding: 10px 15px 4px; vertical-align: top; white-space: nowrap; }
+.gmail-settings-label-divider { border-top: 1px solid #e2e2e2; }
+.gmail-settings-system-row { height: 38px; }
+.gmail-settings-system-row .gmail-settings-label-name { display: block; min-height: 32px; padding-top: 6px; }
+.gmail-settings-label-name { margin-left: 3px; overflow-wrap: anywhere; }
+.gmail-settings-visibility { display: inline-flex; align-items: baseline; white-space: nowrap; gap: 4px; }
+.gmail-settings-visibility button,
+.gmail-settings-label-actions button {
+  border: 0;
+  padding: 0 4px;
+  background: transparent;
+  color: #004dff;
+  font: inherit;
+}
+.gmail-settings-visibility button.gmail-settings-current { color: #202124; font-weight: 700; }
+.gmail-settings-visibility button:hover:not(.gmail-settings-current),
+.gmail-settings-label-actions button:hover,
+.gmail-settings-link:hover { text-decoration: underline; }
+.gmail-settings-imap { display: inline-flex; align-items: center; white-space: nowrap; gap: 4px; margin-left: 4px; }
+.gmail-settings-view input[type="checkbox"],
+.gmail-settings-view input[type="radio"] { appearance: auto; accent-color: auto; width: 13px; height: 13px; margin: 0; padding: 0; flex: none; }
+.gmail-settings-view .gmail-settings-imap input { width: 12px; height: 12px; }
+.gmail-settings-labels-table .gmail-settings-create-label-row td { padding: 0 19px 4px; height: 28px; }
+.gmail-settings-native-button {
+  appearance: auto;
+  color: #000;
+  background: #efefef;
+  border: 1px solid #767676;
+  border-radius: 2px;
+  padding: 2px 7px;
+  font: 13px/17px Arial, Helvetica, sans-serif;
+}
+.gmail-settings-native-button:disabled { opacity: 1; color: #aaa; border-color: #c9c9c9; }
+.gmail-settings-custom-row { height: 53px; }
+.gmail-settings-labels-table .gmail-settings-custom-row td { padding-top: 3px; padding-bottom: 8px; }
+.gmail-settings-conversations { color: #777; font-size: 12px; line-height: 20px; margin-top: 2px; }
+.gmail-settings-label-actions { display: inline-flex; gap: 4px; white-space: nowrap; }
+
+.gmail-settings-general { margin: 0; padding: 0 24px 24px; }
+.gmail-settings-general-row {
+  display: grid;
+  grid-template-columns: 20% minmax(0, 1fr);
+  min-height: 61px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e7e7e7;
+  background: #f4f4f4;
+}
+.gmail-settings-general-row p { margin: 0; }
+.gmail-settings-general-row strong { font-weight: 700; }
+.gmail-settings-general-label { padding-right: 16px; }
+.gmail-settings-general-label > strong,
+.gmail-settings-general-label > small,
+.gmail-settings-general-label > .gmail-settings-link { display: block; }
+.gmail-settings-general-label > small { font: 12px/21px Arial, Helvetica, sans-serif; max-width: 225px; }
+.gmail-settings-link { padding: 0; border: 0; background: transparent; color: #005dff; font: inherit; text-align: left; }
+.gmail-settings-radio { display: flex; align-items: baseline; gap: 8px; min-height: 20px; line-height: 20px; }
+.gmail-settings-radio > input { align-self: flex-start; margin-top: 4px !important; }
+.gmail-settings-notification-tail { min-height: 76px; height: 76px; padding-top: 4px; overflow: hidden; }
+.gmail-settings-stars { min-height: 149px; }
+.gmail-settings-star-presets { display: flex; align-items: center; gap: 12px; margin: 8px 0 3px; }
+.gmail-settings-star-presets > span { width: 75px; }
+.gmail-settings-star-list { display: flex; align-items: center; flex-wrap: wrap; min-height: 29px; }
+.gmail-settings-star-list > strong { width: 87px; flex: none; }
+.gmail-settings-star-list > button { width: 32px; height: 24px; padding: 2px 6px; background: transparent; border: 0; }
+.gmail-settings-picture-row { min-height: 77px; }
+.gmail-settings-picture { display: flex; align-items: center; gap: 20px; }
+.gmail-settings-avatar { display: flex; width: 56px; height: 56px; flex: none; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #fff; background: #326b52; color: #fff; font-size: 24px; }
+.gmail-settings-signature-section { min-height: 102px; outline: none; }
+.gmail-settings-create-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 134px;
+  height: 36px;
+  padding: 0 12px;
+  margin-top: 10px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #2979ff;
+  background: transparent;
+  font: 500 14px/20px "Google Sans", Arial, sans-serif;
+}
+.gmail-settings-create-signature:hover { background: #e8f0fe; border-color: #c4d7fa; }
+.gmail-settings-signature-manager { display: flex; width: min(100%, 760px); min-height: 180px; border: 1px solid #dadce0; background: #fff; }
+.gmail-settings-signature-names { flex: 0 0 200px; border-right: 1px solid #dadce0; }
+.gmail-settings-signature-names > div { display: flex; align-items: center; min-height: 40px; }
+.gmail-settings-signature-names button { padding: 8px; border: 0; background: transparent; color: #444746; }
+.gmail-settings-signature-names button:first-child { flex: 1; min-width: 0; text-align: left; overflow-wrap: anywhere; }
+.gmail-settings-signature-names .gmail-settings-signature-selected { background: #e8f0fe; }
+.gmail-settings-signature-editor { display: flex; flex: 1; min-width: 0; flex-direction: column; }
+.gmail-settings-rich-editor { flex: 1; min-height: 136px; padding: 12px; }
+.gmail-settings-signature-editor .gmail-formatting-row { margin: 0; padding: 4px; }
+.gmail-settings-signature-default { margin-top: 16px; }
+.gmail-settings-signature-default > strong { display: block; margin-bottom: 8px; }
+.gmail-settings-signature-default label { display: flex; flex-direction: column; gap: 4px; width: 200px; font-size: 12px; }
+.gmail-settings-signature-default select { height: 30px; padding: 2px 8px; border: 1px solid #dadce0; border-radius: 3px; background: #fff; color: #202124; font-size: 14px; }
+.gmail-settings-vacation > div > .gmail-settings-radio { margin-bottom: 10px; }
+.gmail-settings-vacation-dates { display: flex; flex-wrap: wrap; gap: 12px 108px; margin: 2px 0 12px 13px; }
+.gmail-settings-vacation-dates label { display: flex; align-items: center; gap: 4px; }
+.gmail-settings-vacation-dates label:first-child { gap: 10px; }
+.gmail-settings-vacation input:not([type="checkbox"]):not([type="radio"]) { height: 24px; padding: 1px 3px; border: 1px solid #777; border-radius: 2px; background: #fff; color: #000; font: 14px/20px Arial, Helvetica, sans-serif; }
+.gmail-settings-vacation input:not([type="checkbox"]):not([type="radio"]):disabled { background: transparent; border-color: #ccc; }
+.gmail-settings-vacation-dates input:not([type="checkbox"]) { width: 138px; }
+.gmail-settings-vacation-subject { display: flex; align-items: center; gap: 10px; margin: 0 0 12px 13px; }
+.gmail-settings-vacation-subject > strong { width: 63px; flex: none; }
+.gmail-settings-vacation-subject > input { width: 358px; max-width: 100%; }
+.gmail-settings-vacation-message { display: flex; align-items: flex-start; gap: 10px; margin-left: 13px; }
+.gmail-settings-vacation-message > strong { width: 70px; flex: none; }
+.gmail-settings-vacation-message > div { width: 600px; max-width: calc(100% - 80px); min-width: 0; }
+.gmail-settings-vacation-message .gmail-formatting-row { height: 28px; padding: 0; margin: 8px 0 10px; }
+.gmail-settings-vacation-message .gmail-formatting-toolbar { height: 28px; border-radius: 14px; box-shadow: none; background: #f1f4f9; }
+.gmail-settings-vacation-message > div > .gmail-settings-link { margin-bottom: 0; }
+.gmail-settings-vacation-editor { min-height: 112px; padding: 10px 0; border: 1px solid #dadce0; }
+.gmail-settings-save { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+
+.gmail-settings-local-filters { padding: 24px; }
+.gmail-settings-local-filters p { margin: 0 0 16px; }
+.gmail-settings-local-filters ul { padding: 0; margin: 0 0 16px; list-style: none; }
+.gmail-settings-local-filters li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #dadce0; overflow-wrap: anywhere; }
+.gmail-settings-local-filters li > div:last-child { display: flex; gap: 12px; align-items: flex-start; }
+.gmail-settings-local-filters > div:last-child { margin-top: 24px; }
+.gmail-settings-notice { position: absolute; bottom: 16px; left: 16px; right: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 12px; color: #fff; background: #323232; border-radius: 4px; box-shadow: 0 2px 8px #0003; }
+.gmail-settings-notice button { width: 32px; height: 32px; padding: 6px; flex: none; border: 0; background: transparent; }
+.gmail-settings-signature-dialog { width: 400px; }
+.gmail-settings-signature-dialog input { width: 100%; height: 40px; padding: 8px 12px; border: 1px solid #747775; border-radius: 4px; background: #fff; color: #202124; }
+.gmail-settings-signature-error { color: #b3261e; margin: 8px 0 0; }
+
+@media (max-width: 900px) {
+  .gmail-settings-general-row { grid-template-columns: minmax(140px, 25%) minmax(0, 1fr); }
+  .gmail-settings-general-label { padding-right: 12px; }
+  .gmail-settings-stars { min-height: 149px; }
+  .gmail-settings-vacation-dates { gap: 12px; }
+  .gmail-settings-signature-manager { flex-direction: column; }
+  .gmail-settings-signature-names { flex-basis: auto; border-right: 0; border-bottom: 1px solid #dadce0; }
+}
+@media (max-width: 600px) {
+  .gmail-settings-general { padding: 0 16px 24px; }
+  .gmail-settings-general-row { display: flex; flex-direction: column; gap: 8px; }
+  .gmail-settings-notification-tail { height: auto; }
+  .gmail-settings-general-label > small { max-width: none; }
+  .gmail-settings-vacation-subject, .gmail-settings-vacation-message, .gmail-settings-vacation-dates { margin-left: 0; }
+  .gmail-settings-vacation-subject > input { flex: 1; min-width: 0; }
+  .gmail-settings-vacation-message { flex-direction: column; }
+  .gmail-settings-vacation-message > div { width: 100%; max-width: 100%; }
+  .gmail-settings-view input:not([type="checkbox"]):not([type="radio"]), .gmail-settings-view select, .gmail-settings-signature-dialog input { font-size: 16px; }
+}

@@ -1,0 +1,922 @@
+{
+  "images": [
+    {
+      "key": "1f600",
+      "file": "/emoji/1f600.png",
+      "emoji": "😀",
+      "category": 1,
+      "description": "grinning face",
+      "captured": true
+    },
+    {
+      "key": "1f603",
+      "file": "/emoji/1f603.png",
+      "emoji": "😃",
+      "category": 1,
+      "description": "smiley",
+      "captured": true
+    },
+    {
+      "key": "1f604",
+      "file": "/emoji/1f604.png",
+      "emoji": "😄",
+      "category": 1,
+      "description": "smile",
+      "captured": true
+    },
+    {
+      "key": "1f601",
+      "file": "/emoji/1f601.png",
+      "emoji": "😁",
+      "category": 1,
+      "description": "grin",
+      "captured": true
+    },
+    {
+      "key": "1f606",
+      "file": "/emoji/1f606.png",
+      "emoji": "😆",
+      "category": 1,
+      "description": "laughing",
+      "captured": true
+    },
+    {
+      "key": "1f605",
+      "file": "/emoji/1f605.png",
+      "emoji": "😅",
+      "category": 1,
+      "description": "sweat smile",
+      "captured": true
+    },
+    {
+      "key": "1f602",
+      "file": "/emoji/1f602.png",
+      "emoji": "😂",
+      "category": 1,
+      "description": "joy",
+      "captured": true
+    },
+    {
+      "key": "1f923",
+      "file": "/emoji/1f923.png",
+      "emoji": "🤣",
+      "category": 1,
+      "description": "rolling on the floor laughing",
+      "captured": true
+    },
+    {
+      "key": "1f62d",
+      "file": "/emoji/1f62d.png",
+      "emoji": "😭",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f609",
+      "file": "/emoji/1f609.png",
+      "emoji": "😉",
+      "category": 1,
+      "description": "wink",
+      "captured": true
+    },
+    {
+      "key": "1f617",
+      "file": "/emoji/1f617.png",
+      "emoji": "😗",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f619",
+      "file": "/emoji/1f619.png",
+      "emoji": "😙",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61a",
+      "file": "/emoji/1f61a.png",
+      "emoji": "😚",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f618",
+      "file": "/emoji/1f618.png",
+      "emoji": "😘",
+      "category": 1,
+      "description": "kissing heart",
+      "captured": true
+    },
+    {
+      "key": "1f970",
+      "file": "/emoji/1f970.png",
+      "emoji": "🥰",
+      "category": 1,
+      "description": "smiling face with hearts",
+      "captured": true
+    },
+    {
+      "key": "1f60d",
+      "file": "/emoji/1f60d.png",
+      "emoji": "😍",
+      "category": 1,
+      "description": "heart eyes",
+      "captured": true
+    },
+    {
+      "key": "1f929",
+      "file": "/emoji/1f929.png",
+      "emoji": "🤩",
+      "category": 1,
+      "description": "star struck",
+      "captured": true
+    },
+    {
+      "key": "1f973",
+      "file": "/emoji/1f973.png",
+      "emoji": "🥳",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae0",
+      "file": "/emoji/1fae0.png",
+      "emoji": "🫠",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f643",
+      "file": "/emoji/1f643.png",
+      "emoji": "🙃",
+      "category": 1,
+      "description": "upside down face",
+      "captured": true
+    },
+    {
+      "key": "1f642",
+      "file": "/emoji/1f642.png",
+      "emoji": "🙂",
+      "category": 1,
+      "description": "slightly smiling face",
+      "captured": true
+    },
+    {
+      "key": "1f972",
+      "file": "/emoji/1f972.png",
+      "emoji": "🥲",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f979",
+      "file": "/emoji/1f979.png",
+      "emoji": "🥹",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f60a",
+      "file": "/emoji/1f60a.png",
+      "emoji": "😊",
+      "category": 1,
+      "description": "blush",
+      "captured": true
+    },
+    {
+      "key": "263a_fe0f",
+      "file": "/emoji/263a_fe0f.png",
+      "emoji": "☺️",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f60c",
+      "file": "/emoji/1f60c.png",
+      "emoji": "😌",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f642_200d_2195_fe0f",
+      "file": "/emoji/1f642_200d_2195_fe0f.png",
+      "emoji": "🙂‍↕️",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f642_200d_2194_fe0f",
+      "file": "/emoji/1f642_200d_2194_fe0f.png",
+      "emoji": "🙂‍↔️",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f60f",
+      "file": "/emoji/1f60f.png",
+      "emoji": "😏",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f924",
+      "file": "/emoji/1f924.png",
+      "emoji": "🤤",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f60b",
+      "file": "/emoji/1f60b.png",
+      "emoji": "😋",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61b",
+      "file": "/emoji/1f61b.png",
+      "emoji": "😛",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61d",
+      "file": "/emoji/1f61d.png",
+      "emoji": "😝",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61c",
+      "file": "/emoji/1f61c.png",
+      "emoji": "😜",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f92a",
+      "file": "/emoji/1f92a.png",
+      "emoji": "🤪",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1faea",
+      "file": "/emoji/1faea.png",
+      "emoji": "🫪",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f974",
+      "file": "/emoji/1f974.png",
+      "emoji": "🥴",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f614",
+      "file": "/emoji/1f614.png",
+      "emoji": "😔",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f97a",
+      "file": "/emoji/1f97a.png",
+      "emoji": "🥺",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f62c",
+      "file": "/emoji/1f62c.png",
+      "emoji": "😬",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f611",
+      "file": "/emoji/1f611.png",
+      "emoji": "😑",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f610",
+      "file": "/emoji/1f610.png",
+      "emoji": "😐",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f636",
+      "file": "/emoji/1f636.png",
+      "emoji": "😶",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f636_200d_1f32b_fe0f",
+      "file": "/emoji/1f636_200d_1f32b_fe0f.png",
+      "emoji": "😶‍🌫️",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae5",
+      "file": "/emoji/1fae5.png",
+      "emoji": "🫥",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f910",
+      "file": "/emoji/1f910.png",
+      "emoji": "🤐",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae1",
+      "file": "/emoji/1fae1.png",
+      "emoji": "🫡",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f914",
+      "file": "/emoji/1f914.png",
+      "emoji": "🤔",
+      "category": 1,
+      "description": "thinking face",
+      "captured": true
+    },
+    {
+      "key": "1f92b",
+      "file": "/emoji/1f92b.png",
+      "emoji": "🤫",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae2",
+      "file": "/emoji/1fae2.png",
+      "emoji": "🫢",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f92d",
+      "file": "/emoji/1f92d.png",
+      "emoji": "🤭",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f971",
+      "file": "/emoji/1f971.png",
+      "emoji": "🥱",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f917",
+      "file": "/emoji/1f917.png",
+      "emoji": "🤗",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae3",
+      "file": "/emoji/1fae3.png",
+      "emoji": "🫣",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f631",
+      "file": "/emoji/1f631.png",
+      "emoji": "😱",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f928",
+      "file": "/emoji/1f928.png",
+      "emoji": "🤨",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f9d0",
+      "file": "/emoji/1f9d0.png",
+      "emoji": "🧐",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f612",
+      "file": "/emoji/1f612.png",
+      "emoji": "😒",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f644",
+      "file": "/emoji/1f644.png",
+      "emoji": "🙄",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f62e_200d_1f4a8",
+      "file": "/emoji/1f62e_200d_1f4a8.png",
+      "emoji": "😮‍💨",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f624",
+      "file": "/emoji/1f624.png",
+      "emoji": "😤",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f620",
+      "file": "/emoji/1f620.png",
+      "emoji": "😠",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f621",
+      "file": "/emoji/1f621.png",
+      "emoji": "😡",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f92c",
+      "file": "/emoji/1f92c.png",
+      "emoji": "🤬",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61e",
+      "file": "/emoji/1f61e.png",
+      "emoji": "😞",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f613",
+      "file": "/emoji/1f613.png",
+      "emoji": "😓",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f61f",
+      "file": "/emoji/1f61f.png",
+      "emoji": "😟",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f625",
+      "file": "/emoji/1f625.png",
+      "emoji": "😥",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f622",
+      "file": "/emoji/1f622.png",
+      "emoji": "😢",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "2639_fe0f",
+      "file": "/emoji/2639_fe0f.png",
+      "emoji": "☹️",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f641",
+      "file": "/emoji/1f641.png",
+      "emoji": "🙁",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1fae4",
+      "file": "/emoji/1fae4.png",
+      "emoji": "🫤",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f615",
+      "file": "/emoji/1f615.png",
+      "emoji": "😕",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f630",
+      "file": "/emoji/1f630.png",
+      "emoji": "😰",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f628",
+      "file": "/emoji/1f628.png",
+      "emoji": "😨",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f627",
+      "file": "/emoji/1f627.png",
+      "emoji": "😧",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f626",
+      "file": "/emoji/1f626.png",
+      "emoji": "😦",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f62e",
+      "file": "/emoji/1f62e.png",
+      "emoji": "😮",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f62f",
+      "file": "/emoji/1f62f.png",
+      "emoji": "😯",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f632",
+      "file": "/emoji/1f632.png",
+      "emoji": "😲",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "key": "1f633",
+      "file": "/emoji/1f633.png",
+      "emoji": "😳",
+      "category": 1,
+      "description": "face",
+      "captured": true
+    },
+    {
+      "emoji": "👍",
+      "description": "thumbs up",
+      "category": 2,
+      "key": "1f44d",
+      "file": "/emoji/1f44d.png",
+      "captured": false
+    },
+    {
+      "emoji": "👋",
+      "description": "wave",
+      "category": 2,
+      "key": "1f44b",
+      "file": "/emoji/1f44b.png",
+      "captured": false
+    },
+    {
+      "emoji": "🙏",
+      "description": "pray",
+      "category": 2,
+      "key": "1f64f",
+      "file": "/emoji/1f64f.png",
+      "captured": false
+    },
+    {
+      "emoji": "👏",
+      "description": "clap",
+      "category": 2,
+      "key": "1f44f",
+      "file": "/emoji/1f44f.png",
+      "captured": false
+    },
+    {
+      "emoji": "💪",
+      "description": "muscle",
+      "category": 2,
+      "key": "1f4aa",
+      "file": "/emoji/1f4aa.png",
+      "captured": false
+    },
+    {
+      "emoji": "🐶",
+      "description": "dog",
+      "category": 3,
+      "key": "1f436",
+      "file": "/emoji/1f436.png",
+      "captured": false
+    },
+    {
+      "emoji": "🐱",
+      "description": "cat",
+      "category": 3,
+      "key": "1f431",
+      "file": "/emoji/1f431.png",
+      "captured": false
+    },
+    {
+      "emoji": "🌻",
+      "description": "sunflower",
+      "category": 3,
+      "key": "1f33b",
+      "file": "/emoji/1f33b.png",
+      "captured": false
+    },
+    {
+      "emoji": "🌳",
+      "description": "tree",
+      "category": 3,
+      "key": "1f333",
+      "file": "/emoji/1f333.png",
+      "captured": false
+    },
+    {
+      "emoji": "🍎",
+      "description": "apple",
+      "category": 4,
+      "key": "1f34e",
+      "file": "/emoji/1f34e.png",
+      "captured": false
+    },
+    {
+      "emoji": "🍕",
+      "description": "pizza",
+      "category": 4,
+      "key": "1f355",
+      "file": "/emoji/1f355.png",
+      "captured": false
+    },
+    {
+      "emoji": "☕",
+      "description": "coffee",
+      "category": 4,
+      "key": "2615",
+      "file": "/emoji/2615.png",
+      "captured": false
+    },
+    {
+      "emoji": "🎂",
+      "description": "birthday cake",
+      "category": 4,
+      "key": "1f382",
+      "file": "/emoji/1f382.png",
+      "captured": false
+    },
+    {
+      "emoji": "🚀",
+      "description": "rocket",
+      "category": 5,
+      "key": "1f680",
+      "file": "/emoji/1f680.png",
+      "captured": false
+    },
+    {
+      "emoji": "✈️",
+      "description": "airplane",
+      "category": 5,
+      "key": "2708_fe0f",
+      "file": "/emoji/2708_fe0f.png",
+      "captured": false
+    },
+    {
+      "emoji": "🚗",
+      "description": "car",
+      "category": 5,
+      "key": "1f697",
+      "file": "/emoji/1f697.png",
+      "captured": false
+    },
+    {
+      "emoji": "🎉",
+      "description": "party popper",
+      "category": 6,
+      "key": "1f389",
+      "file": "/emoji/1f389.png",
+      "captured": false
+    },
+    {
+      "emoji": "🏆",
+      "description": "trophy",
+      "category": 6,
+      "key": "1f3c6",
+      "file": "/emoji/1f3c6.png",
+      "captured": false
+    },
+    {
+      "emoji": "⚽",
+      "description": "soccer",
+      "category": 6,
+      "key": "26bd",
+      "file": "/emoji/26bd.png",
+      "captured": false
+    },
+    {
+      "emoji": "💡",
+      "description": "light bulb",
+      "category": 7,
+      "key": "1f4a1",
+      "file": "/emoji/1f4a1.png",
+      "captured": false
+    },
+    {
+      "emoji": "💻",
+      "description": "computer",
+      "category": 7,
+      "key": "1f4bb",
+      "file": "/emoji/1f4bb.png",
+      "captured": false
+    },
+    {
+      "emoji": "📧",
+      "description": "email",
+      "category": 7,
+      "key": "1f4e7",
+      "file": "/emoji/1f4e7.png",
+      "captured": false
+    },
+    {
+      "emoji": "❤️",
+      "description": "heart",
+      "category": 8,
+      "key": "2764_fe0f",
+      "file": "/emoji/2764_fe0f.png",
+      "captured": false
+    },
+    {
+      "emoji": "✨",
+      "description": "sparkles",
+      "category": 8,
+      "key": "2728",
+      "file": "/emoji/2728.png",
+      "captured": false
+    },
+    {
+      "emoji": "✅",
+      "description": "check",
+      "category": 8,
+      "key": "2705",
+      "file": "/emoji/2705.png",
+      "captured": false
+    },
+    {
+      "emoji": "🇺🇸",
+      "description": "united states",
+      "category": 9,
+      "key": "1f1fa_1f1f8",
+      "file": "/emoji/1f1fa_1f1f8.png",
+      "captured": false
+    },
+    {
+      "emoji": "🇬🇧",
+      "description": "united kingdom",
+      "category": 9,
+      "key": "1f1ec_1f1e7",
+      "file": "/emoji/1f1ec_1f1e7.png",
+      "captured": false
+    }
+  ],
+  "icons": [
+    {
+      "label": "Search",
+      "file": "/emoji/categories/0.svg"
+    },
+    {
+      "label": "Scroll to previous",
+      "file": "/emoji/categories/1.svg"
+    },
+    {
+      "label": "Scroll to next",
+      "file": "/emoji/categories/2.svg"
+    },
+    {
+      "label": "Recently Used",
+      "file": "/emoji/categories/3.svg"
+    },
+    {
+      "label": "Smileys and emotions",
+      "file": "/emoji/categories/4.svg"
+    },
+    {
+      "label": "People",
+      "file": "/emoji/categories/5.svg"
+    },
+    {
+      "label": "Animals and nature",
+      "file": "/emoji/categories/6.svg"
+    },
+    {
+      "label": "Food and beverage",
+      "file": "/emoji/categories/7.svg"
+    },
+    {
+      "label": "Travel and places",
+      "file": "/emoji/categories/8.svg"
+    },
+    {
+      "label": "Activities and events",
+      "file": "/emoji/categories/9.svg"
+    },
+    {
+      "label": "Objects",
+      "file": "/emoji/categories/10.svg"
+    },
+    {
+      "label": "Symbols",
+      "file": "/emoji/categories/11.svg"
+    },
+    {
+      "label": "Flags",
+      "file": "/emoji/categories/12.svg"
+    }
+  ]
+}

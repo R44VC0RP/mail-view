@@ -1,0 +1,2513 @@
+.composer.gmail-composer {
+  position: fixed;
+  right: 15px;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: 600px;
+  height: auto;
+  max-width: calc(100vw - 30px);
+  max-height: calc(100dvh - 40px);
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  color: #222;
+  box-shadow:
+    0 8px 10px 1px #00000024,
+    0 3px 14px 2px #0000001f,
+    0 5px 5px -3px #0003;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  color-scheme: light;
+  transition: none;
+  animation: none;
+  transform: none;
+  pointer-events: auto;
+}
+@media (min-width: 621px) {
+  .composer.gmail-composer:not(.composer-reply-context) {
+    height: calc(616px + var(--compose-content-growth, 0px));
+  }
+}
+.composer.gmail-composer.composer-docked {
+  position: relative;
+  right: auto;
+  bottom: auto;
+}
+.composer.gmail-composer.composer-minimized {
+  width: 328px;
+  height: 40px;
+}
+.composer.gmail-composer.composer-fullscreen {
+  position: fixed;
+  top: 40px;
+  left: 150px;
+  right: 150px;
+  bottom: 29px;
+  width: calc(100vw - 300px);
+  height: calc(100dvh - 69px);
+  max-width: none;
+  max-height: none;
+  z-index: 90;
+}
+.composer.gmail-composer.composer-popout {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.gmail-compose-fullscreen-backdrop {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  background: #0006;
+  pointer-events: auto;
+}
+.gmail-composer button,
+.gmail-composer input,
+.gmail-compose-modal button,
+.gmail-compose-modal input,
+.gmail-compose-menu button,
+.gmail-compose-menu input {
+  font: inherit;
+  color: inherit;
+}
+.gmail-composer button:focus-visible,
+.gmail-compose-menu button:focus-visible,
+.gmail-compose-modal button:focus-visible {
+  outline: 2px solid #0b57d0;
+  outline-offset: -2px;
+}
+.gmail-compose-header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px 0 16px;
+  border-radius: 8px 8px 0 0;
+  background: #f2f6fc;
+  color: #041e49;
+}
+.gmail-composer .gmail-compose-title {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gmail-compose-window-controls {
+  display: flex;
+  flex: none;
+}
+.gmail-compose-window-controls > button {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  padding: 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #444746;
+  transition: border-radius 350ms cubic-bezier(0.27, 1.06, 0.18, 1);
+  position: relative;
+}
+.gmail-compose-window-controls > button:hover {
+  border-radius: 50%;
+  background: #dfe3e7;
+}
+.gmail-compose-content {
+  display: flex;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  padding: 0 16px;
+}
+.gmail-compose-content[hidden] {
+  display: none;
+}
+.gmail-compose-scroll {
+  flex: 1;
+  min-height: 0;
+  margin: 0 -16px;
+  padding: 0 16px var(--compose-footer-height, 60px);
+  overflow: hidden auto;
+  scroll-padding-bottom: var(--compose-footer-height, 60px);
+}
+.gmail-compose-scroll::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+.gmail-compose-scroll::-webkit-scrollbar-thumb {
+  border: 3px solid #fff;
+  border-radius: 8px;
+  background: #c1c1c1;
+}
+.gmail-compose-scroll::-webkit-scrollbar-track {
+  background: #fff;
+}
+.gmail-compose-pinned {
+  position: absolute;
+  right: 16px;
+  bottom: 0;
+  left: 16px;
+  z-index: 1;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  background: #fff;
+}
+.composer-reply-context .gmail-compose-content,
+.composer-reply-context .gmail-compose-scroll {
+  flex: 0 1 auto;
+}
+.composer-reply-context .gmail-compose-scroll {
+  padding-bottom: 0;
+  scroll-padding-bottom: 0;
+}
+.composer-reply-context .gmail-compose-pinned {
+  position: static;
+}
+.gmail-compose-fields {
+  flex: none;
+}
+.gmail-compose-recipients {
+  min-height: 40px;
+  box-shadow: inset 0 -1px 0 #64798f1f;
+}
+.gmail-compose-recipient-row {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  position: relative;
+}
+.gmail-compose-recipient-row > .gmail-recipient-field {
+  flex: 1;
+}
+.gmail-compose-recipient-row:has([data-label="Cc"]),
+.gmail-compose-recipient-row:has([data-label="Bcc"]),
+.gmail-composer .gmail-recipient-field:is([data-label="Cc"], [data-label="Bcc"]) {
+  min-height: 39px;
+}
+.gmail-composer .gmail-recipient-field > label {
+  margin-right: 8.66667px;
+}
+.gmail-composer .gmail-recipient-field:has(.gmail-recipient-chip) > label {
+  margin-right: 4.66667px;
+}
+.gmail-composer .gmail-recipient-field:has(.gmail-recipient-chip) .gmail-recipient-entry > input {
+  margin-left: 4px;
+}
+.gmail-composer .gmail-chip-external .gmail-chip-leading {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.gmail-composer .gmail-chip-external:hover {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.gmail-composer .gmail-recipient-field:is([data-label="Cc"], [data-label="Bcc"]) > label {
+  padding-bottom: 9px;
+}
+.gmail-composer .gmail-recipient-field:is([data-label="Cc"], [data-label="Bcc"]) > .gmail-recipient-entry {
+  padding-top: 1px;
+}
+.gmail-composer .gmail-recipient-field .gmail-recipient-entry > input {
+  height: 36px;
+  margin: 0;
+  padding: 0;
+}
+.gmail-compose-recipient-row:has(.gmail-recipient-chip):has(.gmail-compose-recipient-toggles) {
+  flex-wrap: wrap;
+}
+.gmail-compose-recipient-row:has(.gmail-recipient-chip):has(.gmail-compose-recipient-toggles) > .gmail-recipient-field {
+  flex-basis: 100%;
+}
+.gmail-compose-recipient-toggles {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: flex-start;
+  height: 20px;
+  margin-top: 9px;
+  margin-right: 4.66667px;
+  margin-left: auto;
+  gap: 4px;
+  color: #444746;
+}
+.gmail-compose-recipient-toggles > button {
+  border: 0;
+  padding: 0;
+  background: none;
+  height: 20px;
+  position: relative;
+}
+.gmail-compose-recipient-toggles > button:hover {
+  text-decoration: underline;
+}
+.gmail-compose-recipient-row:has([data-label="Cc"]) > .gmail-compose-recipient-toggles,
+.gmail-compose-recipient-row:has([data-label="Bcc"]) > .gmail-compose-recipient-toggles {
+  margin-top: 6px;
+}
+.gmail-compose-recipient-row:has(.gmail-recipient-chip)
+  > .gmail-compose-recipient-toggles {
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+.gmail-composer .gmail-compose-recipient-summary {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px 0;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 0;
+  background: transparent;
+  color: #222;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-composer .gmail-compose-empty-summary {
+  color: #747775;
+}
+.gmail-compose-external-recipient {
+  text-decoration: underline #ffdea9 1px;
+  text-underline-offset: 4px;
+}
+.gmail-composer .gmail-compose-subject {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: inset 0 -1px 0 #64798f1f;
+  outline: none;
+  background: #fff;
+  color: #222;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gmail-compose-subject::placeholder {
+  opacity: 1;
+  color: #747775;
+}
+.gmail-compose-body-wrap {
+  display: block;
+  flex: 0 1 auto;
+  min-height: 0;
+  padding: 10px 0;
+  overflow: visible;
+}
+.gmail-compose-body-wrap > .gmail-compose-editor {
+  width: 100%;
+  min-height: max(0px, calc(416px - var(--compose-warning-height, 0px)));
+  padding: 0;
+  font:
+    13px/19.5px Arial,
+    Helvetica,
+    sans-serif;
+}
+.composer-reply-context .gmail-compose-body-wrap > .gmail-compose-editor {
+  min-height: 300px;
+}
+@media (min-width: 621px) {
+  /* Observed floating-body cap at the 1179px and 1000px benchmark viewports. */
+  .gmail-composer:not(.composer-fullscreen):not(.composer-popout) .gmail-compose-body-wrap {
+    max-height: 594px;
+    overflow: hidden auto;
+  }
+  .gmail-compose-body-wrap::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  .gmail-compose-body-wrap::-webkit-scrollbar-thumb {
+    border-left: 6px solid #fff;
+    border-right: 2px solid #fff;
+    background: #ccc;
+    background-clip: padding-box;
+  }
+  .gmail-compose-body-wrap::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  .gmail-composer:not(.composer-reply-context):has(.gmail-formatting-row) .gmail-compose-editor {
+    min-height: max(0px, calc(360px - var(--compose-warning-height, 0px)));
+  }
+}
+.composer-fullscreen .gmail-compose-content,
+.composer-popout .gmail-compose-content,
+.composer-fullscreen .gmail-compose-scroll,
+.composer-popout .gmail-compose-scroll {
+  flex: 1;
+}
+.composer-fullscreen .gmail-compose-scroll,
+.composer-popout .gmail-compose-scroll {
+  display: flex;
+  flex-direction: column;
+}
+.composer-fullscreen .gmail-compose-body-wrap,
+.composer-popout .gmail-compose-body-wrap {
+  display: flex;
+  flex: 1 0 auto;
+}
+.composer-fullscreen .gmail-compose-body-wrap > .gmail-compose-editor,
+.composer-popout .gmail-compose-body-wrap > .gmail-compose-editor {
+  min-height: 0;
+  flex: 1;
+}
+.gmail-compose-external-warning {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 12px;
+  min-height: 60px;
+  margin: 0 -16px;
+  padding: 10px 16px;
+  background: #fbbc04;
+  color: #202124;
+  font:
+    14px/20px "Google Sans",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+.gmail-compose-external-warning > svg {
+  flex: none;
+}
+.gmail-compose-external-warning > p {
+  flex: 1;
+  margin: 0;
+}
+.gmail-compose-external-warning strong {
+  font-weight: 700;
+}
+.gmail-compose-external-warning > button {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.gmail-compose-pinned > .gmail-formatting-row {
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+.gmail-compose-footer {
+  display: flex;
+  flex: none;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 10.75px 0 13.25px;
+  gap: 0;
+}
+.gmail-compose-send-group {
+  display: flex;
+  flex: none;
+  height: 36px;
+  width: 105px;
+  margin-right: 12px;
+}
+.gmail-composer .gmail-compose-send {
+  flex: none;
+  width: 72px;
+  height: 36px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 18px 0 0 18px;
+  background: #0b57d0;
+  color: #fff;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-composer .gmail-compose-send-caret {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 36px;
+  padding: 0 7px 0 5px;
+  border: 0;
+  border-left: 1px solid #fff9;
+  border-radius: 0 18px 18px 0;
+  background: #0b57d0;
+  color: #fff;
+  position: relative;
+}
+.gmail-compose-send:hover:not(:disabled),
+.gmail-compose-send-caret:hover:not(:disabled) {
+  background: #1a64df;
+  box-shadow:
+    0 1px 2px #3c40434d,
+    0 1px 3px 1px #3c404326;
+}
+.gmail-compose-tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0;
+  margin-left: -6px;
+  transform: translateY(-0.75px);
+}
+.gmail-compose-tools > [aria-label="More compose options"] { margin-left: 4px; }
+.gmail-composer .gmail-compose-tool {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  color: #444746;
+  background: transparent;
+}
+.gmail-compose-tool:hover:not(:disabled) {
+  background: #e9e9e9;
+}
+.gmail-composer .gmail-compose-tool-active {
+  background: #d3e3fd;
+  border-radius: 6px;
+}
+.gmail-composer .gmail-compose-discard {
+  margin-left: auto;
+  margin-right: -6px;
+  transform: translateY(-0.75px);
+}
+.gmail-compose-file-input {
+  display: none;
+}
+.gmail-compose-attachments {
+  flex: none;
+  max-height: 140px;
+  overflow: auto;
+  padding-bottom: 8px;
+}
+.gmail-compose-attached-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  width: 100%;
+  margin: 4px 0;
+  padding: 0 8px;
+  background: #f2f2f2;
+  border: 1px solid #dadce0;
+  color: #1155cc;
+  font:
+    13px/20px Arial,
+    sans-serif;
+}
+.gmail-compose-attached-file > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gmail-compose-attached-file > small {
+  flex: none;
+  color: #777;
+  font-size: 13px;
+}
+.gmail-compose-attached-file > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  margin-left: auto;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 0;
+  color: #5f6368;
+}
+.gmail-compose-loading {
+  font:
+    13px/20px Arial,
+    sans-serif;
+  color: #5f6368;
+}
+.composer-confidential-active .gmail-compose-header {
+  background: #205b9e;
+  color: #fff;
+}
+.composer-confidential-active .gmail-compose-window-controls > button {
+  color: #fff;
+}
+.composer-confidential-active .gmail-compose-window-controls > button:hover {
+  background: #ffffff26;
+}
+.gmail-compose-send-group.gmail-compose-send-single {
+  width: 72px;
+}
+.gmail-compose-send-single .gmail-compose-send {
+  border-radius: 18px;
+  background: #205b9e;
+}
+.gmail-compose-confidential-banner {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 20px;
+  min-height: 115px;
+  margin: 0 0 20px;
+  padding: 16px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #1f1f1f;
+  font:
+    14px/20px Arial,
+    sans-serif;
+}
+.gmail-confidential-banner-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #205b9e;
+  color: #fff;
+}
+.gmail-compose-confidential-banner > div {
+  flex: 1;
+  min-width: 0;
+}
+.gmail-compose-confidential-banner > div > span {
+  color: #1558b0;
+}
+.gmail-compose-confidential-banner p {
+  margin: 0;
+  color: #5f6368;
+  font:
+    12px/16px Arial,
+    sans-serif;
+}
+.gmail-compose-confidential-banner > .gmail-dialog-text {
+  padding: 0;
+  min-width: 24px;
+  height: 32px;
+  font-size: 14px;
+  color: #1558b0;
+}
+.gmail-compose-confidential-banner > .gmail-compose-tool {
+  margin-left: -8px;
+  margin-right: 4px;
+}
+
+.gmail-compose-menu {
+  position: fixed;
+  z-index: 120;
+  padding: 6px 0;
+  border-radius: 4px;
+  background: #fff;
+  color: #202124;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  box-shadow:
+    0 1px 2px #3c40434d,
+    0 2px 6px 2px #3c404326;
+  color-scheme: light;
+}
+.gmail-compose-menu > button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 32px;
+  padding: 6px 16px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  white-space: nowrap;
+}
+.gmail-compose-menu > button > span {
+  flex: 1;
+}
+.gmail-compose-menu > button:hover,
+.gmail-compose-menu > button:focus-visible {
+  background: #eee;
+}
+.gmail-compose-menu-divider {
+  height: 1px;
+  background: #e8eaed;
+  margin: 6px 0;
+}
+.gmail-compose-menu-send {
+  width: 157.578px;
+  box-shadow:
+    0 8px 10px 1px #00000024,
+    0 3px 14px 2px #0000001f,
+    0 5px 5px -3px #0003;
+}
+.gmail-compose-menu-more {
+  width: 227.508px;
+}
+.gmail-compose-menu-signature {
+  width: 216.906px;
+  box-shadow:
+    0 8px 10px 1px #00000024,
+    0 3px 14px 2px #0000001f,
+    0 5px 5px -3px #0003;
+}
+.gmail-compose-menu-signature > button:first-child {
+  padding-left: 48px;
+}
+.gmail-compose-menu-signature > button > .gmail-signature-check {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.gmail-compose-menu-label {
+  width: 240px;
+  max-height: min(600px, calc(100dvh - 16px));
+  overflow: auto;
+}
+.gmail-compose-label-title {
+  padding: 8px 16px;
+}
+.gmail-compose-menu-label > input {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 8px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #c4c7c5;
+}
+.gmail-compose-menu-merge {
+  width: 249.1640625px;
+  box-shadow:
+    0 8px 10px 1px #00000024,
+    0 3px 14px 2px #0000001f,
+    0 5px 5px -3px #0003;
+}
+.gmail-compose-menu-merge > button {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.gmail-compose-menu-merge > button:last-child {
+  padding-right: 48px;
+}
+.gmail-compose-menu-merge > button:first-child > svg:first-child {
+  color: #5f6368;
+}
+.gmail-compose-menu-merge > button:first-child > svg:last-child {
+  opacity: 0.7;
+}
+.gmail-compose-menu-merge > button:disabled {
+  opacity: 0.24;
+}
+.gmail-mail-merge-sheet-glyph {
+  display: block;
+  flex: none !important;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  mask: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAxUlEQVR4Aa3BIU4DQRQA0MdmWlPDEdCcAoWuR6OBBP//GkwNhgOgqzkA1+AI+FUVhWQxkw6kNPPe2X6/19Ogs0Fng86K2gIvWGPheBO2eChqN7j1f+e4x3tRuzAbkWqJwIhUSwQuB30ti7ZAaAuEXww6K9pGpFoiMCLVEuFb0ccGz9gVbYHQ9uHQ5EdxvB3esHUoERiLthHpBIPOitqn2SPutG3whESoRVF7xRpXWGlb+kNRm3CNFRbadmaJNEsExqJtcqIvDQcnpKA0ZXwAAAAASUVORK5CYII=")
+    center / 20px no-repeat;
+}
+
+.gmail-compose-modal-backdrop {
+  position: fixed;
+  z-index: 150;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0006;
+  color-scheme: light;
+}
+.gmail-compose-modal {
+  position: relative;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+  border: 0;
+  border-radius: 28px;
+  background: #fff;
+  color: #202124;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  outline: none;
+  overflow: visible;
+}
+.gmail-compose-modal h2 {
+  margin: 0 0 16px;
+  font:
+    400 24px/32px "Google Sans",
+    Arial,
+    sans-serif;
+  color: #1f1f1f;
+}
+.gmail-dialog-actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+}
+.gmail-compose-modal .gmail-dialog-primary,
+.gmail-composer .gmail-dialog-primary {
+  height: 40px;
+  min-width: 64px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 20px;
+  background: #0b57d0;
+  color: #fff;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-dialog-primary:hover:not(:disabled) {
+  box-shadow:
+    0 1px 2px #3c40434d,
+    0 1px 3px 1px #3c404326;
+  background: #1a64df;
+}
+.gmail-compose-modal .gmail-dialog-text,
+.gmail-composer .gmail-dialog-text {
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: #0b57d0;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-dialog-text:hover {
+  background: #f0f4f9;
+}
+.gmail-compose-modal .gmail-dialog-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #444746;
+}
+.gmail-dialog-close:hover {
+  background: #0000000a;
+}
+.gmail-compose-alert {
+  min-width: 268px;
+  max-width: min(560px, calc(100vw - 32px));
+}
+.gmail-compose-alert p {
+  margin: 0;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-compose-alert .gmail-dialog-actions {
+  margin-top: 24px;
+}
+.gmail-compose-alert .gmail-dialog-primary {
+  padding: 0 24px;
+}
+.gmail-compose-alert .gmail-dialog-primary:focus {
+  outline: 3px solid #00639b;
+  outline-offset: 2px;
+}
+.gmail-confidential-dialog {
+  width: 560px;
+  height: 464px;
+}
+.gmail-confidential-description {
+  margin: 0;
+  font:
+    14px/20px Arial,
+    sans-serif;
+}
+.gmail-confidential-description a {
+  color: #0000ee;
+  text-decoration: underline;
+}
+.gmail-confidential-dialog h3 {
+  margin: 0 0 10px;
+  color: #0b57d0;
+  font:
+    500 12px/16px "Google Sans",
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+}
+.gmail-confidential-expiration {
+  margin-top: 28px;
+}
+.gmail-expiration-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gmail-expiration-control {
+  position: relative;
+  width: 291px;
+  flex: none;
+}
+.gmail-expiration-control > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #747775;
+  border-radius: 2px;
+  background: transparent;
+  font:
+    16px/24px "Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-expiration-control > button:focus,
+.gmail-expiration-control > button[aria-expanded="true"] {
+  border: 2px solid #205b9e;
+  padding: 0 15px;
+  outline: none;
+}
+.gmail-expiration-control > button > svg {
+  color: #8eaff1;
+}
+.gmail-expiration-control > button[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+.gmail-expiration-row time {
+  color: #5f6368;
+  font:
+    14px/20px Arial,
+    sans-serif;
+  white-space: nowrap;
+}
+.gmail-expiration-menu {
+  position: absolute;
+  z-index: 2;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 0 0 4px 4px;
+  background: #f0f4f9;
+  box-shadow: 0 2px 6px 2px #0003;
+}
+.gmail-expiration-menu > button {
+  display: block;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font:
+    16px/24px "Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-expiration-menu > button[aria-selected="true"],
+.gmail-expiration-menu > button:hover {
+  background: #e3e3e3;
+}
+.gmail-confidential-passcode {
+  margin-top: 30px;
+}
+.gmail-confidential-passcode > p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 14px;
+  color: #444746;
+  font:
+    14px/20px Arial,
+    sans-serif;
+}
+.gmail-confidential-passcode > h3 {
+  margin-bottom: 8px;
+}
+.gmail-confidential-passcode [role="radiogroup"] {
+  display: flex;
+  gap: 40px;
+}
+.gmail-confidential-passcode label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    14px/20px Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.gmail-confidential-passcode input {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid #5f6368;
+  border-radius: 50%;
+  background: #fff;
+}
+.gmail-confidential-passcode input:checked {
+  border-color: #205b9e;
+  background: radial-gradient(circle, #205b9e 0 5px, #fff 5.5px);
+}
+.gmail-confidential-dialog .gmail-dialog-actions {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  margin: 0;
+}
+.gmail-confidential-dialog .gmail-dialog-primary {
+  background: #205b9e;
+  min-width: 80px;
+}
+.gmail-confidential-dialog .gmail-dialog-text {
+  color: #1558b0;
+}
+.gmail-schedule-dialog {
+  width: 315.719px;
+  height: 261px;
+  padding: 24px 0 0;
+  overflow: hidden;
+}
+.gmail-schedule-dialog h2 {
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0 24px 4px;
+}
+.gmail-schedule-zone {
+  margin: 0;
+  color: #5f6368;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-schedule-dialog .gmail-schedule-zone {
+  margin: 0 24px 16px;
+}
+.gmail-schedule-options > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 36px;
+  padding: 8px 24px;
+  border: 0;
+  background: transparent;
+  color: #444746;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+  white-space: nowrap;
+}
+.gmail-schedule-options > button:hover {
+  background: #eee;
+}
+.gmail-schedule-options time {
+  color: #5f6368;
+}
+.gmail-schedule-options .gmail-compose-menu-divider {
+  margin: 8px 0 4px;
+}
+.gmail-schedule-options > .gmail-schedule-pick {
+  justify-content: flex-start;
+  gap: 12px;
+  height: 40px;
+}
+.gmail-schedule-custom-dialog {
+  width: 520px;
+}
+.gmail-schedule-custom-fields {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 24px;
+}
+.gmail-schedule-calendar {
+  width: 252px;
+  flex: none;
+}
+.gmail-calendar-heading {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+.gmail-calendar-heading > strong {
+  flex: 1;
+  font-weight: 500;
+}
+.gmail-calendar-heading > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+}
+.gmail-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 12px;
+}
+.gmail-calendar-grid > span,
+.gmail-calendar-grid > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #444746;
+  font:
+    12px/20px Arial,
+    sans-serif;
+}
+.gmail-calendar-grid > button {
+  border-radius: 50%;
+}
+.gmail-calendar-grid > button:hover {
+  background: #f0f4f9;
+}
+.gmail-calendar-grid > button[aria-pressed="true"] {
+  background: #0b57d0;
+  color: #fff;
+}
+.gmail-calendar-grid
+  > button.gmail-calendar-other-month:not([aria-pressed="true"]) {
+  color: #9aa0a6;
+}
+.gmail-schedule-date-inputs {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 4px;
+}
+.gmail-schedule-date-inputs > input {
+  width: 100%;
+  height: 36px;
+  padding: 8px;
+  border: 1px solid #c4c7c5;
+  border-radius: 4px;
+  background: #fff;
+  font:
+    14px/20px Arial,
+    sans-serif;
+}
+.gmail-dialog-error {
+  color: #c5221f;
+  font-size: 13px;
+}
+.gmail-link-popover {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  position: fixed;
+  z-index: 130;
+  width: 324px;
+  height: 104px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  color: #444746;
+  box-shadow:
+    0 1px 3px #0005,
+    0 4px 8px 3px #00000026;
+  color-scheme: light;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-link-inputs {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 8px;
+  width: 216px;
+}
+.gmail-link-inputs > label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
+  padding: 0 16px 0 8px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #747775;
+}
+.gmail-link-inputs > label:focus-within {
+  box-shadow: inset 0 0 0 2px #0b57d0;
+}
+.gmail-link-inputs input {
+  width: 100%;
+  min-width: 0;
+  height: 20px;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  background: transparent;
+  color: #1f1f1f;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-link-inputs input::placeholder {
+  color: #747775;
+  opacity: 1;
+}
+.gmail-link-popover > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #0b57d0;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-link-popover > button:disabled {
+  color: #a7a7a7;
+  opacity: 1;
+}
+.gmail-link-popover > button:hover:not(:disabled) {
+  background: #f0f4f9;
+}
+
+.gmail-picker-backdrop {
+  background: #f0f4f980;
+}
+.gmail-compose-file-picker {
+  display: flex;
+  flex-direction: column;
+  width: 1054px;
+  height: 652px;
+  padding: 0;
+  border: 1px solid #acacac;
+  border-radius: 4px;
+  background: #e9eef6;
+  box-shadow: 0 4px 16px #0003;
+  overflow: hidden;
+}
+.gmail-compose-file-picker > .gmail-dialog-close {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  top: 18px;
+  right: 18px;
+}
+.gmail-compose-file-picker > header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 72px;
+  flex: none;
+  padding: 12px 70px 12px 24px;
+}
+.gmail-compose-file-picker h2 {
+  flex: none;
+  margin: 0 12px 0 0;
+  font-size: 22px;
+  line-height: 28px;
+}
+.gmail-picker-search {
+  display: flex;
+  position: relative;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  height: 48px;
+  margin: 0;
+  padding: 0 4px 0 16px;
+  border-radius: 24px;
+  background: #dde3ea;
+}
+.gmail-picker-search input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  padding: 0 72px 0 52px;
+  outline: none;
+  background: transparent;
+  font:
+    16px/16px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-picker-search > svg {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  pointer-events: none;
+}
+.gmail-picker-search > button {
+  display: flex;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.gmail-picker-search > button:hover {
+  background: #0000000a;
+}
+.gmail-picker-search > .icon { color: #1f1f1f; }
+.gmail-picker-tabs {
+  display: flex;
+  flex: none;
+  height: 48px;
+  gap: 0;
+  padding: 0 24px;
+  border-bottom: 1px solid #c4c7c5;
+}
+.gmail-picker-tabs > button {
+  border: 0;
+  padding: 0 16px;
+  background: transparent;
+  color: #444746;
+  font:
+    14px Arial,
+    sans-serif;
+}
+.gmail-picker-tabs > button:nth-child(1) {
+  width: 78.0078125px;
+}
+.gmail-picker-tabs > button:nth-child(2) {
+  width: 89.671875px;
+}
+.gmail-picker-tabs > button:nth-child(3) {
+  width: 134.09375px;
+}
+.gmail-picker-tabs > button:nth-child(4) {
+  width: 78.9296875px;
+}
+.gmail-picker-tabs > button[aria-selected="true"] {
+  border-bottom: 3px solid #0b57d0;
+  color: #0b57d0;
+}
+.gmail-picker-view-switch {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2px;
+  height: 55px;
+  padding: 12px 24px 11px;
+}
+.gmail-picker-view-switch > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54.5px;
+  height: 32px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 16px;
+  background: #dde3ea;
+  gap: 4px;
+}
+.gmail-picker-view-glyph {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: #0842a0;
+}
+.gmail-picker-view-glyph > .icon { display: block; }
+.gmail-picker-view-switch > [aria-checked="true"] .gmail-picker-view-glyph { color: #004a77; }
+.gmail-picker-view-switch > button:first-child {
+  border-radius: 16px 8px 8px 16px;
+}
+.gmail-picker-view-switch > button[aria-checked="true"] {
+  background: #c2e7ff;
+}
+.gmail-picker-filter {
+  position: absolute;
+  z-index: 2;
+  top: 60px;
+  right: 72px;
+  width: 220px;
+  padding: 8px 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 2px #0003;
+}
+.gmail-picker-filter > button {
+  display: block;
+  width: 100%;
+  height: 36px;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+.gmail-picker-filter > button:hover,
+.gmail-picker-filter > button[aria-checked="true"] {
+  background: #f0f4f9;
+}
+.gmail-picker-files {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 16px;
+  min-height: 0;
+  overflow: auto;
+  margin: 0 16px;
+  padding: 0 24px 24px;
+  border-radius: 12px;
+  background: #fff;
+}
+.gmail-picker-files > h3 {
+  width: 100%;
+  flex: none;
+  height: 44px;
+  margin: 0 0 -16px;
+  padding: 16px 0 8px;
+  color: #444746;
+  font:
+    500 14px/20px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-picker-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 180px;
+  height: 160px;
+  border: 1px solid #c4c7c5;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+.gmail-picker-file > img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+}
+.gmail-picker-file > span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 8px;
+}
+.gmail-picker-file[aria-pressed="true"] {
+  border: 2px solid #0b57d0;
+  background: #d3e3fd;
+}
+.gmail-picker-empty {
+  margin: auto;
+  color: #5f6368;
+}
+.gmail-picker-upload {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.gmail-compose-file-picker > footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 56px;
+  padding: 4px 24px 4px 18px;
+}
+.gmail-compose-file-picker > footer > .gmail-dialog-primary {
+  margin-left: auto;
+}
+.gmail-picker-clear-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.gmail-picker-files-list {
+  gap: 0;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.gmail-picker-files-list > .gmail-picker-file {
+  flex: none;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 48px;
+  padding: 8px;
+  gap: 16px;
+  border: 0;
+  border-radius: 0;
+}
+.gmail-picker-files-list > .gmail-picker-file > img {
+  width: 32px;
+  height: 32px;
+}
+/* Picker artwork: five original captured SVG thumbnails and palette bytes; empty-state/product glyph artwork uses reference PNG crops. */
+.gmail-photo-picker,
+.gmail-contacts-picker {
+  font-family:
+    "Drive Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+}
+.gmail-photo-picker .gmail-picker-search > input,
+.gmail-contacts-picker .gmail-picker-search > input {
+  width: calc(100% + 27px);
+}
+.gmail-photo-picker .gmail-picker-search > button,
+.gmail-contacts-picker .gmail-picker-search > button {
+  top: 14px;
+  right: 21px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+.gmail-photo-picker > header {
+  gap: 20px;
+}
+.gmail-photo-picker > header > h2 {
+  width: 200px;
+  margin: 0;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+}
+.gmail-photo-picker-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.gmail-photo-sources {
+  flex: none;
+  width: 244px;
+  padding: 0 8px;
+}
+.gmail-photo-sources > button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 180px;
+  height: 40px;
+  padding: 0 24px;
+  background: transparent;
+  border: 0;
+  border-radius: 20px;
+  text-align: left;
+  font:
+    500 14px/20px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-photo-sources > button[aria-selected="true"] {
+  background: #c2e7ff;
+  color: #004a77;
+}
+.gmail-photo-sources > button:last-child {
+  position: relative;
+  margin-top: 15px;
+}
+.gmail-photo-sources > button:last-child::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  top: -8px;
+  background: #c4c7c5;
+}
+.gmail-photo-source-glyph {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.gmail-photo-panel {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  overflow: auto;
+}
+.gmail-photo-tabs {
+  display: flex;
+  height: 48px;
+  padding-left: 8px;
+  border-bottom: 1px solid #dadce0;
+}
+.gmail-photo-tabs > button {
+  position: relative;
+  width: 77.703125px;
+  height: 47px;
+  padding: 0 16px;
+  background: transparent;
+  border: 0;
+  color: #444746;
+  font:
+    500 14px/20px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-photo-tabs > button:last-child {
+  width: 80.9453125px;
+}
+.gmail-photo-tabs > button[aria-selected="true"] {
+  color: #0b57d0;
+}
+.gmail-photo-tabs > button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 3px;
+  background: #0b57d0;
+  border-radius: 3px 3px 0 0;
+}
+.gmail-photo-empty {
+  position: absolute;
+  top: 183px;
+  left: 50%;
+  width: 400px;
+  max-width: 100%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.gmail-photo-empty-art {
+  display: block;
+  width: 192px;
+  height: 192px;
+  margin: 0 auto;
+  background: url("data:image/png;base64,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")
+    center / 192px no-repeat;
+}
+.gmail-photo-empty h3 {
+  margin: 8px 0 20px;
+  font:
+    500 16px/24px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+  color: #444746;
+}
+.gmail-photo-empty p {
+  margin: 0;
+  font:
+    14px/20px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+  color: #444746;
+}
+.gmail-photo-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+.gmail-photo-items > button {
+  height: 140px;
+  padding: 0;
+  border: 2px solid transparent;
+  background: transparent;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.gmail-photo-items > button[aria-pressed="true"] {
+  border-color: #0b57d0;
+}
+.gmail-photo-items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gmail-photo-upload {
+  padding: 160px 24px 0;
+  text-align: center;
+}
+.gmail-photo-url {
+  padding: 24px;
+}
+.gmail-photo-url > label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gmail-photo-url input {
+  height: 40px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #c4c7c5;
+  border-radius: 4px;
+}
+.gmail-photo-url > img {
+  display: block;
+  max-width: 100%;
+  max-height: 350px;
+  margin-top: 24px;
+}
+
+.gmail-contacts-picker {
+  width: 658px;
+}
+.gmail-contacts-product-glyph {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.gmail-contacts-picker > header > h2 {
+  width: 152.796875px;
+  margin-right: 12px;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+}
+.gmail-contacts-controls {
+  position: relative;
+  flex: none;
+  height: 62px;
+  border-bottom: 1px solid #dadce0;
+}
+.gmail-contacts-controls > label {
+  position: absolute;
+  left: 20px;
+  top: 10.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  font-size: 16px;
+}
+.gmail-contacts-controls > label > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.gmail-picker-checkbox {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.gmail-contacts-picker .gmail-picker-checkbox > input[type="checkbox"] {
+  position: absolute;
+  inset: 0;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.gmail-picker-checkbox-box {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #444746;
+  border-radius: 2px;
+  color: #fff;
+  pointer-events: none;
+}
+.gmail-picker-checkbox-box > .icon { display: block; padding: 0.976562px; opacity: 0; }
+.gmail-picker-checkbox-box path { stroke-width: 4px; }
+.gmail-picker-checkbox > input:checked + .gmail-picker-checkbox-box { border-color: #0b57d0; background: #0b57d0; }
+.gmail-picker-checkbox > input:checked + .gmail-picker-checkbox-box > .icon { opacity: 1; }
+.gmail-picker-checkbox > input:focus-visible + .gmail-picker-checkbox-box { outline: 2px solid #0b57d0; outline-offset: 3px; }
+.gmail-contacts-picker .gmail-contacts-controls > select {
+  appearance: none;
+  background: transparent url("/icons/formatArrow20.png") right 8px center / 20px no-repeat;
+  padding-right: 32px;
+}
+.gmail-contacts-controls > .gmail-contacts-manage {
+  position: absolute;
+  top: 11px;
+  left: 226.6953125px;
+  width: 119.21875px;
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 20px;
+  background: #d3e3fd;
+  color: #0b57d0;
+  font:
+    500 14px/20px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-contacts-manage:disabled {
+  opacity: 1;
+  color: #1010104d;
+}
+.gmail-contacts-controls > select {
+  position: absolute;
+  right: 36px;
+  top: 11px;
+  width: 184px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #9aa0a6;
+  border-radius: 2px;
+  background: transparent;
+  color: #202124;
+  font:
+    16px/24px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-contacts-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.gmail-contacts-content > h3 {
+  margin: 0;
+  padding: 22px 16px 0;
+  text-transform: uppercase;
+  font:
+    12px/20px Arial,
+    sans-serif;
+}
+.gmail-contacts-empty {
+  position: absolute;
+  top: 156px;
+  left: 50%;
+  width: 400px;
+  max-width: 100%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.gmail-contacts-empty-art {
+  display: block;
+  width: 192px;
+  height: 192px;
+  margin: 0 auto;
+  background: url("data:image/png;base64,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")
+    center / 192px no-repeat;
+}
+.gmail-contacts-empty > h2 {
+  margin: 12px 0;
+  font:
+    22px/28px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-contacts-empty > p {
+  margin: 0;
+  font:
+    16px/24px "Drive Google Sans Text",
+    "Google Sans",
+    Arial,
+    sans-serif;
+  color: #444746;
+}
+.gmail-contacts-rows {
+  margin-top: 16px;
+}
+.gmail-contacts-rows > label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  padding: 8px 32px;
+}
+.gmail-contacts-rows > label:hover {
+  background: #dde3ea;
+}
+.gmail-contacts-rows small {
+  display: block;
+  color: #5f6368;
+  font-size: 13px;
+}
+
+.gmail-layout-picker {
+  display: flex;
+  flex-direction: column;
+  width: 950px;
+  height: 600px;
+  padding: 0;
+  overflow: hidden;
+}
+.gmail-layout-picker > header {
+  height: 68px;
+  flex: none;
+  padding: 24px 24px 16px;
+}
+.gmail-layout-picker > header > h2 {
+  margin: 0;
+  font:
+    22px/28px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-layout-picker > .gmail-dialog-close {
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
+.gmail-layout-tabs {
+  display: flex;
+  flex: none;
+  height: 48px;
+  padding: 0 24px;
+  border-bottom: 1px solid #e8eaed;
+}
+.gmail-layout-tabs > button {
+  position: relative;
+  height: 40px;
+  width: 122.7890625px;
+  margin: 4px 12px 4px 0;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #1a73e8;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-layout-tabs > button:last-child {
+  width: 94.8046875px;
+}
+.gmail-layout-tabs > button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #1a73e8;
+}
+.gmail-layout-picker-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.gmail-layout-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 144px);
+  grid-auto-rows: 189.5px;
+  align-content: start;
+  width: 612px;
+  flex: none;
+  padding: 5px 12px;
+  overflow: auto;
+  background: #f8f9fa;
+}
+.gmail-layout-gallery > button {
+  display: block;
+  position: relative;
+  width: 120px;
+  height: 132px;
+  margin: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+  text-align: left;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px #3c40434d,
+    0 2px 6px 2px #3c404326;
+}
+.gmail-layout-gallery > button[aria-selected="true"] {
+  box-shadow: 0 0 5px 1px #1a73e8;
+  outline: 2px solid #1a73e8;
+}
+.gmail-layout-gallery > button > span:last-child {
+  display: block;
+  height: 28px;
+  padding: 4px 5px;
+  font:
+    12px/20px Arial,
+    sans-serif;
+  color: #444746;
+}
+.gmail-layout-thumbnail {
+  display: block;
+  width: 120px;
+  height: 104px;
+  background-color: #f8f9fa;
+  background-position: center 6px;
+  background-size: 106px 120px;
+  background-repeat: no-repeat;
+}
+.gmail-layout-thumbnail-0 {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxNCAxMSAxMTcgMTMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjEyIiB5PSIxMSIgd2lkdGg9IjEyMSIgaGVpZ2h0PSIxMzQiIGZpbGw9IiNGOEY5RkEiPjwvcmVjdD48cmVjdCB4PSIyOSIgeT0iMTEiIHdpZHRoPSI4NiIgaGVpZ2h0PSIxMzQiIGZpbGw9IndoaXRlIj48L3JlY3Q+PHJlY3QgeD0iMzYiIHk9IjIxIiB3aWR0aD0iNjUiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iI0JEQzFDNiI+PC9yZWN0PjxyZWN0IHg9IjM2IiB5PSIzMiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iMzYiIHk9IjM2IiB3aWR0aD0iNzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSIzNiIgeT0iNDAiIHdpZHRoPSI3MiIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjM2IiB5PSI0NCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iMzYiIHk9IjQ4IiB3aWR0aD0iNzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSIzNiIgeT0iNTIiIHdpZHRoPSI0MSIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjM2IiB5PSI2MCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iMzYiIHk9IjY0IiB3aWR0aD0iNzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSIzNiIgeT0iNjgiIHdpZHRoPSI3MiIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjM2IiB5PSI3MiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iMzYiIHk9Ijc2IiB3aWR0aD0iNzIiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSIzNiIgeT0iODAiIHdpZHRoPSI0MSIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjU5IiB5PSI5MCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjgpIiBkPSJNNTcgMTM1QzU3IDEzMy44OTUgNTcuODk1NCAxMzMgNTkgMTMzSDYxQzYyLjEwNDYgMTMzIDYzIDEzMy44OTUgNjMgMTM1VjEzN0M2MyAxMzguMTA1IDYyLjEwNDYgMTM5IDYxIDEzOUg1OUM1Ny44OTU0IDEzOSA1NyAxMzguMTA1IDU3IDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjgpIiBkPSJNNjUgMTM1QzY1IDEzMy44OTUgNjUuODk1NCAxMzMgNjcgMTMzSDY5QzcwLjEwNDYgMTMzIDcxIDEzMy44OTUgNzEgMTM1VjEzN0M3MSAxMzguMTA1IDcwLjEwNDYgMTM5IDY5IDEzOUg2N0M2NS44OTU0IDEzOSA2NSAxMzguMTA1IDY1IDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjgpIiBkPSJNNzMgMTM1QzczIDEzMy44OTUgNzMuODk1NCAxMzMgNzUgMTMzSDc3Qzc4LjEwNDYgMTMzIDc5IDEzMy44OTUgNzkgMTM1VjEzN0M3OSAxMzguMTA1IDc4LjEwNDYgMTM5IDc3IDEzOUg3NUM3My44OTU0IDEzOSA3MyAxMzguMTA1IDczIDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjgpIiBkPSJNODEgMTM1QzgxIDEzMy44OTUgODEuODk1NCAxMzMgODMgMTMzSDg1Qzg2LjEwNDYgMTMzIDg3IDEzMy44OTUgODcgMTM1VjEzN0M4NyAxMzguMTA1IDg2LjEwNDYgMTM5IDg1IDEzOUg4M0M4MS44OTU0IDEzOSA4MSAxMzguMTA1IDgxIDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHJlY3QgeD0iNDgiIHk9IjExNCIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9IjEzIiB3aWR0aD0iMTgiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0iIzgwODY4QiI+PC9yZWN0PjxjaXJjbGUgY3g9IjYyLjUiIGN5PSIxNC41IiByPSIyLjUiIGZpbGw9IiM4MDg2OEIiPjwvY2lyY2xlPjwvc3ZnPg==");
+}
+.gmail-layout-thumbnail-1 {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxNCAxMSAxMTcgMTMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjI5IiB5PSIxOSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjY1IiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iMjkiIHk9Ijg0IiB3aWR0aD0iODYiIGhlaWdodD0iNDMiIGZpbGw9IiNGOEY5RkEiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iOTYiIHdpZHRoPSI0MCIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSI5MyIgd2lkdGg9IjQwIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9Ijk5IiB3aWR0aD0iMjAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iMTE0IiB3aWR0aD0iNDAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iMTExIiB3aWR0aD0iNDAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iMTE3IiB3aWR0aD0iMjAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI1OCIgeT0iNzQiIHdpZHRoPSIyOCIgaGVpZ2h0PSI2IiByeD0iMSIgZmlsbD0iIzdkZDllMSI+PC9yZWN0PjxyZWN0IHg9IjQxIiB5PSI1OCIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjZmZmZmZmIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI0MSIgeT0iNjYiIHdpZHRoPSI2MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iNTEiIHk9IjYxIiB3aWR0aD0iNDMiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNmZmZmZmYiIHN0eWxlPSJmaWxsLW9wYWNpdHk6IDAuMyI+PC9yZWN0PjxyZWN0IHg9IjUxIiB5PSI2OSIgd2lkdGg9IjQzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjZmZmZmZmIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI0NiIgeT0iMjkiIHdpZHRoPSI1MiIgaGVpZ2h0PSIyNiIgcng9IjIiIGZpbGw9IiM3ZGQ5ZTEiPjwvcmVjdD48cGF0aCBkPSJNNjkgNDJMNzEgNDQuN0w3NCA0MUw3OCA0Nkg2Nkw2OSA0MloiIGZpbGw9IiMwMDdiODMiPjwvcGF0aD48cGF0aCBkPSJNNjcuNSA0MUM2Ni42NzE2IDQxIDY2IDQwLjMyODQgNjYgMzkuNUM2NiAzOC42NzE2IDY2LjY3MTYgMzggNjcuNSAzOEM2OC4zMjg0IDM4IDY5IDM4LjY3MTYgNjkgMzkuNUM2OSA0MC4zMjg0IDY4LjMyODQgNDEgNjcuNSA0MVoiIGZpbGw9IiMwMDdiODMiPjwvcGF0aD48cmVjdCB4PSIzNyIgeT0iODkiIHdpZHRoPSIyNiIgaGVpZ2h0PSIxNSIgcng9IjIiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNNDguNSA5N0w0OS41IDk4LjM1TDUxIDk2LjVMNTMgOTlINDdMNDguNSA5N1oiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cGF0aCBkPSJNNDcuNzUgOTYuNUM0Ny4zMzU4IDk2LjUgNDcgOTYuMTY0MiA0NyA5NS43NUM0NyA5NS4zMzU4IDQ3LjMzNTggOTUgNDcuNzUgOTVDNDguMTY0MiA5NSA0OC41IDk1LjMzNTggNDguNSA5NS43NUM0OC41IDk2LjE2NDIgNDguMTY0MiA5Ni41IDQ3Ljc1IDk2LjVaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHJlY3QgeD0iNDgiIHk9IjEzOSIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNTQiIHk9IjE0MiIgd2lkdGg9IjM3IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cGF0aCBkPSJNNTcgMTMzQzU3IDEzMS44OTUgNTcuODk1NCAxMzEgNTkgMTMxSDYxQzYyLjEwNDYgMTMxIDYzIDEzMS44OTUgNjMgMTMzVjEzNUM2MyAxMzYuMTA1IDYyLjEwNDYgMTM3IDYxIDEzN0g1OUM1Ny44OTU0IDEzNyA1NyAxMzYuMTA1IDU3IDEzNVYxMzNaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggZD0iTTY1IDEzM0M2NSAxMzEuODk1IDY1Ljg5NTQgMTMxIDY3IDEzMUg2OUM3MC4xMDQ2IDEzMSA3MSAxMzEuODk1IDcxIDEzM1YxMzVDNzEgMTM2LjEwNSA3MC4xMDQ2IDEzNyA2OSAxMzdINjdDNjUuODk1NCAxMzcgNjUgMTM2LjEwNSA2NSAxMzVWMTMzWiIgZmlsbD0iI0RBRENFMCI+PC9wYXRoPjxwYXRoIGQ9Ik03MyAxMzNDNzMgMTMxLjg5NSA3My44OTU0IDEzMSA3NSAxMzFINzdDNzguMTA0NiAxMzEgNzkgMTMxLjg5NSA3OSAxMzNWMTM1Qzc5IDEzNi4xMDUgNzguMTA0NiAxMzcgNzcgMTM3SDc1QzczLjg5NTQgMTM3IDczIDEzNi4xMDUgNzMgMTM1VjEzM1oiIGZpbGw9IiNEQURDRTAiPjwvcGF0aD48cGF0aCBkPSJNODEgMTMzQzgxIDEzMS44OTUgODEuODk1NCAxMzEgODMgMTMxSDg1Qzg2LjEwNDYgMTMxIDg3IDEzMS44OTUgODcgMTMzVjEzNUM4NyAxMzYuMTA1IDg2LjEwNDYgMTM3IDg1IDEzN0g4M0M4MS44OTU0IDEzNyA4MSAxMzYuMTA1IDgxIDEzNVYxMzNaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHJlY3QgeD0iNDEiIHk9IjIzIiB3aWR0aD0iNjMiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iMzciIHk9IjEwNyIgd2lkdGg9IjI2IiBoZWlnaHQ9IjE1IiByeD0iMiIgZmlsbD0iI0U4RUFFRCI+PC9yZWN0PjxwYXRoIGQ9Ik00OC41IDExNUw0OS41IDExNi4zNUw1MSAxMTQuNUw1MyAxMTdINDdMNDguNSAxMTVaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTQ3Ljc1IDExNC41QzQ3LjMzNTggMTE0LjUgNDcgMTE0LjE2NCA0NyAxMTMuNzVDNDcgMTEzLjMzNiA0Ny4zMzU4IDExMyA0Ny43NSAxMTNDNDguMTY0MiAxMTMgNDguNSAxMTMuMzM2IDQ4LjUgMTEzLjc1QzQ4LjUgMTE0LjE2NCA0OC4xNjQyIDExNC41IDQ3Ljc1IDExNC41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjY3IiB5PSIxMyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiM4MDg2OEIiPjwvcmVjdD48Y2lyY2xlIGN4PSI2Mi41IiBjeT0iMTQuNSIgcj0iMi41IiBmaWxsPSIjODA4NjhCIj48L2NpcmNsZT48L3N2Zz4=");
+}
+.gmail-layout-thumbnail-2 {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxNCAxMSAxMTcgMTMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjI5IiB5PSIxOSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjM0IiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iMjkiIHk9IjUzIiB3aWR0aD0iODYiIGhlaWdodD0iNzgiIGZpbGw9IiNGOEY5RkEiPjwvcmVjdD48cmVjdCB4PSI3NyIgeT0iMzgiIHdpZHRoPSIyOSIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iMzUiIHk9IjIzIiB3aWR0aD0iMzQiIGhlaWdodD0iMjYiIHJ4PSIyIiBmaWxsPSIjN2RkOWUxIj48L3JlY3Q+PHBhdGggZD0iTTQ5IDM2TDUxIDM4LjdMNTQgMzVMNTggNDBINDZMNDkgMzZaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHBhdGggZD0iTTQ3LjUgMzVDNDYuNjcxNiAzNSA0NiAzNC4zMjg0IDQ2IDMzLjVDNDYgMzIuNjcxNiA0Ni42NzE2IDMyIDQ3LjUgMzJDNDguMzI4NCAzMiA0OSAzMi42NzE2IDQ5IDMzLjVDNDkgMzQuMzI4NCA0OC4zMjg0IDM1IDQ3LjUgMzVaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHJlY3QgeD0iNDYiIHk9IjkyIiB3aWR0aD0iMjIiIGhlaWdodD0iMTUiIHJ4PSIyIiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHBhdGggZD0iTTU1LjUgMTAwTDU2LjUgMTAxLjM1TDU4IDk5LjVMNjAgMTAySDU0TDU1LjUgMTAwWiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxwYXRoIGQ9Ik01NC43NSA5OS41QzU0LjMzNTggOTkuNSA1NCA5OS4xNjQyIDU0IDk4Ljc1QzU0IDk4LjMzNTggNTQuMzM1OCA5OCA1NC43NSA5OEM1NS4xNjQyIDk4IDU1LjUgOTguMzM1OCA1NS41IDk4Ljc1QzU1LjUgOTkuMTY0MiA1NS4xNjQyIDk5LjUgNTQuNzUgOTkuNVoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cGF0aCBkPSJNNDUgMTIyQzQ1IDEyMC44OTUgNDUuODk1NCAxMjAgNDcgMTIwSDU4LjJWMTI5SDQ3QzQ1Ljg5NTQgMTI5IDQ1IDEyOC4xMDUgNDUgMTI3VjEyMloiIGZpbGw9IiNFOEVBRUQiPjwvcGF0aD48cGF0aCBkPSJNNTAuNyAxMjQuOEw1MS4zIDEyNS42MUw1Mi4yIDEyNC41TDUzLjQgMTI2SDQ5LjhMNTAuNyAxMjQuOFoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cGF0aCBkPSJNNTAuMjUgMTI0LjVDNTAuMDAxNSAxMjQuNSA0OS44IDEyNC4yOTkgNDkuOCAxMjQuMDVDNDkuOCAxMjMuODAxIDUwLjAwMTUgMTIzLjYgNTAuMjUgMTIzLjZDNTAuNDk4NSAxMjMuNiA1MC43IDEyMy44MDEgNTAuNyAxMjQuMDVDNTAuNyAxMjQuMjk5IDUwLjQ5ODUgMTI0LjUgNTAuMjUgMTI0LjVaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHJlY3QgeD0iNTkuMiIgeT0iMTIwIiB3aWR0aD0iMTMuMiIgaGVpZ2h0PSI5IiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHBhdGggZD0iTTY0LjkgMTI0LjhMNjUuNSAxMjUuNjFMNjYuNCAxMjQuNUw2Ny42IDEyNkg2NEw2NC45IDEyNC44WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxwYXRoIGQ9Ik02NC40NSAxMjQuNUM2NC4yMDE1IDEyNC41IDY0IDEyNC4yOTkgNjQgMTI0LjA1QzY0IDEyMy44MDEgNjQuMjAxNSAxMjMuNiA2NC40NSAxMjMuNkM2NC42OTg1IDEyMy42IDY0LjkgMTIzLjgwMSA2NC45IDEyNC4wNUM2NC45IDEyNC4yOTkgNjQuNjk4NSAxMjQuNSA2NC40NSAxMjQuNVoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cmVjdCB4PSI3My40IiB5PSIxMjAiIHdpZHRoPSIxMy4yIiBoZWlnaHQ9IjkiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNNzkuMSAxMjQuOEw3OS43IDEyNS42MUw4MC42IDEyNC41TDgxLjggMTI2SDc4LjJMNzkuMSAxMjQuOFoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cGF0aCBkPSJNNzguNjUgMTI0LjVDNzguNDAxNSAxMjQuNSA3OC4yIDEyNC4yOTkgNzguMiAxMjQuMDVDNzguMiAxMjMuODAxIDc4LjQwMTUgMTIzLjYgNzguNjUgMTIzLjZDNzguODk4NSAxMjMuNiA3OS4xIDEyMy44MDEgNzkuMSAxMjQuMDVDNzkuMSAxMjQuMjk5IDc4Ljg5ODUgMTI0LjUgNzguNjUgMTI0LjVaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTg3LjYgMTIwSDk4LjhDOTkuOTA0NiAxMjAgMTAwLjggMTIwLjg5NSAxMDAuOCAxMjJWMTI3QzEwMC44IDEyOC4xMDUgOTkuOTA0NiAxMjkgOTguOCAxMjlIODcuNlYxMjBaIiBmaWxsPSIjRThFQUVEIj48L3BhdGg+PHBhdGggZD0iTTkzLjMgMTI0LjhMOTMuOSAxMjUuNjFMOTQuOCAxMjQuNUw5NiAxMjZIOTIuNEw5My4zIDEyNC44WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxwYXRoIGQ9Ik05Mi44NSAxMjQuNUM5Mi42MDE1IDEyNC41IDkyLjQgMTI0LjI5OSA5Mi40IDEyNC4wNUM5Mi40IDEyMy44MDEgOTIuNjAxNSAxMjMuNiA5Mi44NSAxMjMuNkM5My4wOTg1IDEyMy42IDkzLjMgMTIzLjgwMSA5My4zIDEyNC4wNUM5My4zIDEyNC4yOTkgOTMuMDk4NSAxMjQuNSA5Mi44NSAxMjQuNVoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cmVjdCB4PSI3OCIgeT0iOTIiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxNSIgcng9IjIiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNODcuNSAxMDBMODguNSAxMDEuMzVMOTAgOTkuNUw5MiAxMDJIODZMODcuNSAxMDBaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTg2Ljc1IDk5LjVDODYuMzM1OCA5OS41IDg2IDk5LjE2NDIgODYgOTguNzVDODYgOTguMzM1OCA4Ni4zMzU4IDk4IDg2Ljc1IDk4Qzg3LjE2NDIgOTggODcuNSA5OC4zMzU4IDg3LjUgOTguNzVDODcuNSA5OS4xNjQyIDg3LjE2NDIgOTkuNSA4Ni43NSA5OS41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjQ4IiB5PSIxNDEiIHdpZHRoPSI0NyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjU0IiB5PSIxNDQiIHdpZHRoPSIzNyIgaGVpZ2h0PSIxIiByeD0iMC41IiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHBhdGggZD0iTTU3IDEzNUM1NyAxMzMuODk1IDU3Ljg5NTQgMTMzIDU5IDEzM0g2MUM2Mi4xMDQ2IDEzMyA2MyAxMzMuODk1IDYzIDEzNVYxMzdDNjMgMTM4LjEwNSA2Mi4xMDQ2IDEzOSA2MSAxMzlINTlDNTcuODk1NCAxMzkgNTcgMTM4LjEwNSA1NyAxMzdWMTM1WiIgZmlsbD0iI0RBRENFMCI+PC9wYXRoPjxwYXRoIGQ9Ik02NSAxMzVDNjUgMTMzLjg5NSA2NS44OTU0IDEzMyA2NyAxMzNINjlDNzAuMTA0NiAxMzMgNzEgMTMzLjg5NSA3MSAxMzVWMTM3QzcxIDEzOC4xMDUgNzAuMTA0NiAxMzkgNjkgMTM5SDY3QzY1Ljg5NTQgMTM5IDY1IDEzOC4xMDUgNjUgMTM3VjEzNVoiIGZpbGw9IiNEQURDRTAiPjwvcGF0aD48cGF0aCBkPSJNNzMgMTM1QzczIDEzMy44OTUgNzMuODk1NCAxMzMgNzUgMTMzSDc3Qzc4LjEwNDYgMTMzIDc5IDEzMy44OTUgNzkgMTM1VjEzN0M3OSAxMzguMTA1IDc4LjEwNDYgMTM5IDc3IDEzOUg3NUM3My44OTU0IDEzOSA3MyAxMzguMTA1IDczIDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggZD0iTTgxIDEzNUM4MSAxMzMuODk1IDgxLjg5NTQgMTMzIDgzIDEzM0g4NUM4Ni4xMDQ2IDEzMyA4NyAxMzMuODk1IDg3IDEzNVYxMzdDODcgMTM4LjEwNSA4Ni4xMDQ2IDEzOSA4NSAxMzlIODNDODEuODk1NCAxMzkgODEgMTM4LjEwNSA4MSAxMzdWMTM1WiIgZmlsbD0iI0RBRENFMCI+PC9wYXRoPjxyZWN0IHg9IjcyIiB5PSIzMyIgd2lkdGg9IjM5IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiNmZmZmZmYiIHN0eWxlPSJmaWxsLW9wYWNpdHk6IDAuMyI+PC9yZWN0PjxyZWN0IHg9IjU5IiB5PSI4MCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iNDEiIHk9IjU2IiB3aWR0aD0iNjMiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI1MSIgeT0iNTkiIHdpZHRoPSI0MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjQxIiB5PSI2NCIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNTEiIHk9IjY3IiB3aWR0aD0iNDMiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI0MSIgeT0iNzIiIHdpZHRoPSI2MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjUxIiB5PSI3NSIgd2lkdGg9IjQzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNDQiIHk9IjEwOSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNEQURDRTAiIHN0eWxlPSJmaWxsLW9wYWNpdHk6IDAuMyI+PC9yZWN0PjxyZWN0IHg9IjQ0IiB5PSIxMTEiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxIiByeD0iMC41IiBmaWxsPSIjREFEQ0UwIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI3NiIgeT0iMTA5IiB3aWR0aD0iMjUiIGhlaWdodD0iMSIgcng9IjAuNSIgZmlsbD0iI0RBRENFMCIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iNzYiIHk9IjExMSIgd2lkdGg9IjE3IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNEQURDRTAiIHN0eWxlPSJmaWxsLW9wYWNpdHk6IDAuMyI+PC9yZWN0PjxyZWN0IHg9IjUxIiB5PSIxMTYiIHdpZHRoPSI0MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSIxMyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiM4MDg2OEIiPjwvcmVjdD48Y2lyY2xlIGN4PSI2Mi41IiBjeT0iMTQuNSIgcj0iMi41IiBmaWxsPSIjODA4NjhCIj48L2NpcmNsZT48L3N2Zz4=");
+}
+.gmail-layout-thumbnail-3 {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxNCAxMSAxMTcgMTMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjI5IiB5PSIxOSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjU2IiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iMjkiIHk9Ijc1IiB3aWR0aD0iODYiIGhlaWdodD0iNzAiIGZpbGw9IiNGOEY5RkEiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iODIiIHdpZHRoPSI0MCIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSI3OSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjQkRDMUM2Ij48L3JlY3Q+PHJlY3QgeD0iNjciIHk9Ijg5IiB3aWR0aD0iMTQiIGhlaWdodD0iMyIgcng9IjAuNSIgZmlsbD0iIzAwN2I4MyI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSI4NSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9Ijk5IiB3aWR0aD0iNDAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iOTYiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI0JEQzFDNiI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSIxMDYiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzIiByeD0iMC41IiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9IjEwMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9IjExNiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNjciIHk9IjExMyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjQkRDMUM2Ij48L3JlY3Q+PHJlY3QgeD0iNjciIHk9IjEyMyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjMiIHJ4PSIwLjUiIGZpbGw9IiMwMDdiODMiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iMTE5IiB3aWR0aD0iMjAiIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI1OSIgeT0iNjYiIHdpZHRoPSIyOCIgaGVpZ2h0PSI2IiByeD0iMSIgZmlsbD0iIzdkZDllMSI+PC9yZWN0PjxyZWN0IHg9IjQxIiB5PSI1OCIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjZmZmZmZmIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI1MSIgeT0iNjEiIHdpZHRoPSI0MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iNDciIHk9IjI5IiB3aWR0aD0iNTIiIGhlaWdodD0iMjYiIHJ4PSIyIiBmaWxsPSIjN2RkOWUxIj48L3JlY3Q+PHBhdGggZD0iTTcwIDQyTDcyIDQ0LjdMNzUgNDFMNzkgNDZINjdMNzAgNDJaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHBhdGggZD0iTTY4LjUgNDFDNjcuNjcxNiA0MSA2NyA0MC4zMjg0IDY3IDM5LjVDNjcgMzguNjcxNiA2Ny42NzE2IDM4IDY4LjUgMzhDNjkuMzI4NCAzOCA3MCAzOC42NzE2IDcwIDM5LjVDNzAgNDAuMzI4NCA2OS4zMjg0IDQxIDY4LjUgNDFaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHJlY3QgeD0iMzciIHk9Ijc4IiB3aWR0aD0iMjYiIGhlaWdodD0iMTUiIHJ4PSIyIiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHBhdGggZD0iTTQ4LjUgODZMNDkuNSA4Ny4zNUw1MSA4NS41TDUzIDg4SDQ3TDQ4LjUgODZaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTQ3Ljc1IDg1LjVDNDcuMzM1OCA4NS41IDQ3IDg1LjE2NDIgNDcgODQuNzVDNDcgODQuMzM1OCA0Ny4zMzU4IDg0IDQ3Ljc1IDg0QzQ4LjE2NDIgODQgNDguNSA4NC4zMzU4IDQ4LjUgODQuNzVDNDguNSA4NS4xNjQyIDQ4LjE2NDIgODUuNSA0Ny43NSA4NS41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjM3IiB5PSI5NSIgd2lkdGg9IjI2IiBoZWlnaHQ9IjE1IiByeD0iMiIgZmlsbD0iI0U4RUFFRCI+PC9yZWN0PjxwYXRoIGQ9Ik00OC41IDEwM0w0OS41IDEwNC4zNUw1MSAxMDIuNUw1MyAxMDVINDdMNDguNSAxMDNaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTQ3Ljc1IDEwMi41QzQ3LjMzNTggMTAyLjUgNDcgMTAyLjE2NCA0NyAxMDEuNzVDNDcgMTAxLjMzNiA0Ny4zMzU4IDEwMSA0Ny43NSAxMDFDNDguMTY0MiAxMDEgNDguNSAxMDEuMzM2IDQ4LjUgMTAxLjc1QzQ4LjUgMTAyLjE2NCA0OC4xNjQyIDEwMi41IDQ3Ljc1IDEwMi41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjM3IiB5PSIxMTIiIHdpZHRoPSIyNiIgaGVpZ2h0PSIxNSIgcng9IjIiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNNDguNSAxMjBMNDkuNSAxMjEuMzVMNTEgMTE5LjVMNTMgMTIySDQ3TDQ4LjUgMTIwWiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxwYXRoIGQ9Ik00Ny43NSAxMTkuNUM0Ny4zMzU4IDExOS41IDQ3IDExOS4xNjQgNDcgMTE4Ljc1QzQ3IDExOC4zMzYgNDcuMzM1OCAxMTggNDcuNzUgMTE4QzQ4LjE2NDIgMTE4IDQ4LjUgMTE4LjMzNiA0OC41IDExOC43NUM0OC41IDExOS4xNjQgNDguMTY0MiAxMTkuNSA0Ny43NSAxMTkuNVoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cmVjdCB4PSI0OCIgeT0iMTM5IiB3aWR0aD0iNDciIGhlaWdodD0iMiIgcng9IjEiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cmVjdCB4PSI1NCIgeT0iMTQyIiB3aWR0aD0iMzciIGhlaWdodD0iMSIgcng9IjAuNSIgZmlsbD0iI0RBRENFMCI+PC9yZWN0PjxwYXRoIGQ9Ik01NyAxMzNDNTcgMTMxLjg5NSA1Ny44OTU0IDEzMSA1OSAxMzFINjFDNjIuMTA0NiAxMzEgNjMgMTMxLjg5NSA2MyAxMzNWMTM1QzYzIDEzNi4xMDUgNjIuMTA0NiAxMzcgNjEgMTM3SDU5QzU3Ljg5NTQgMTM3IDU3IDEzNi4xMDUgNTcgMTM1VjEzM1oiIGZpbGw9IiNEQURDRTAiPjwvcGF0aD48cGF0aCBkPSJNNjUgMTMzQzY1IDEzMS44OTUgNjUuODk1NCAxMzEgNjcgMTMxSDY5QzcwLjEwNDYgMTMxIDcxIDEzMS44OTUgNzEgMTMzVjEzNUM3MSAxMzYuMTA1IDcwLjEwNDYgMTM3IDY5IDEzN0g2N0M2NS44OTU0IDEzNyA2NSAxMzYuMTA1IDY1IDEzNVYxMzNaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggZD0iTTczIDEzM0M3MyAxMzEuODk1IDczLjg5NTQgMTMxIDc1IDEzMUg3N0M3OC4xMDQ2IDEzMSA3OSAxMzEuODk1IDc5IDEzM1YxMzVDNzkgMTM2LjEwNSA3OC4xMDQ2IDEzNyA3NyAxMzdINzVDNzMuODk1NCAxMzcgNzMgMTM2LjEwNSA3MyAxMzVWMTMzWiIgZmlsbD0iI0RBRENFMCI+PC9wYXRoPjxwYXRoIGQ9Ik04MSAxMzNDODEgMTMxLjg5NSA4MS44OTU0IDEzMSA4MyAxMzFIODVDODYuMTA0NiAxMzEgODcgMTMxLjg5NSA4NyAxMzNWMTM1Qzg3IDEzNi4xMDUgODYuMTA0NiAxMzcgODUgMTM3SDgzQzgxLjg5NTQgMTM3IDgxIDEzNi4xMDUgODEgMTM1VjEzM1oiIGZpbGw9IiNEQURDRTAiPjwvcGF0aD48cmVjdCB4PSI0MSIgeT0iMjMiIHdpZHRoPSI2MyIgaGVpZ2h0PSIzIiByeD0iMS41IiBmaWxsPSIjZmZmZmZmIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI2NyIgeT0iMTMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIzIiByeD0iMS41IiBmaWxsPSIjODA4NjhCIj48L3JlY3Q+PGNpcmNsZSBjeD0iNjIuNSIgY3k9IjE0LjUiIHI9IjIuNSIgZmlsbD0iIzgwODY4QiI+PC9jaXJjbGU+PC9zdmc+");
+}
+.gmail-layout-thumbnail-4 {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxNCAxMSAxMTcgMTMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHg9IjI5IiB5PSIxOSIgd2lkdGg9Ijg2IiBoZWlnaHQ9IjU2IiBmaWxsPSIjMDA3YjgzIj48L3JlY3Q+PHJlY3QgeD0iMjkiIHk9Ijc1IiB3aWR0aD0iODYiIGhlaWdodD0iNTUiIGZpbGw9IiNGOEY5RkEiPjwvcmVjdD48cmVjdCB4PSI1OSIgeT0iMzciIHdpZHRoPSIyOCIgaGVpZ2h0PSI2IiByeD0iMSIgZmlsbD0iIzdkZDllMSI+PC9yZWN0PjxyZWN0IHg9IjY0IiB5PSIxMjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSI0IiByeD0iMSIgZmlsbD0iIzAwN2I4MyI+PC9yZWN0PjxyZWN0IHg9IjQxIiB5PSIyOSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjZmZmZmZmIiBzdHlsZT0iZmlsbC1vcGFjaXR5OiAwLjMiPjwvcmVjdD48cmVjdCB4PSI1MSIgeT0iMzIiIHdpZHRoPSI0MyIgaGVpZ2h0PSIyIiByeD0iMSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iNDciIHk9IjQ2IiB3aWR0aD0iNTIiIGhlaWdodD0iMjYiIHJ4PSIyIiBmaWxsPSIjN2RkOWUxIj48L3JlY3Q+PHBhdGggZD0iTTcwIDU5TDcyIDYxLjdMNzUgNThMNzkgNjNINjdMNzAgNTlaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHBhdGggZD0iTTY4LjUgNThDNjcuNjcxNiA1OCA2NyA1Ny4zMjg0IDY3IDU2LjVDNjcgNTUuNjcxNiA2Ny42NzE2IDU1IDY4LjUgNTVDNjkuMzI4NCA1NSA3MCA1NS42NzE2IDcwIDU2LjVDNzAgNTcuMzI4NCA2OS4zMjg0IDU4IDY4LjUgNThaIiBmaWxsPSIjMDA3YjgzIj48L3BhdGg+PHJlY3QgeD0iNDgiIHk9IjE0MSIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjREFEQ0UwIj48L3JlY3Q+PHJlY3QgeD0iNTQiIHk9IjE0NCIgd2lkdGg9IjM3IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNEQURDRTAiPjwvcmVjdD48cGF0aCBkPSJNNTcgMTM1QzU3IDEzMy44OTUgNTcuODk1NCAxMzMgNTkgMTMzSDYxQzYyLjEwNDYgMTMzIDYzIDEzMy44OTUgNjMgMTM1VjEzN0M2MyAxMzguMTA1IDYyLjEwNDYgMTM5IDYxIDEzOUg1OUM1Ny44OTU0IDEzOSA1NyAxMzguMTA1IDU3IDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHBhdGggZD0iTTY1IDEzNUM2NSAxMzMuODk1IDY1Ljg5NTQgMTMzIDY3IDEzM0g2OUM3MC4xMDQ2IDEzMyA3MSAxMzMuODk1IDcxIDEzNVYxMzdDNzEgMTM4LjEwNSA3MC4xMDQ2IDEzOSA2OSAxMzlINjdDNjUuODk1NCAxMzkgNjUgMTM4LjEwNSA2NSAxMzdWMTM1WiIgZmlsbD0iI0RBRENFMCI+PC9wYXRoPjxwYXRoIGQ9Ik03MyAxMzVDNzMgMTMzLjg5NSA3My44OTU0IDEzMyA3NSAxMzNINzdDNzguMTA0NiAxMzMgNzkgMTMzLjg5NSA3OSAxMzVWMTM3Qzc5IDEzOC4xMDUgNzguMTA0NiAxMzkgNzcgMTM5SDc1QzczLjg5NTQgMTM5IDczIDEzOC4xMDUgNzMgMTM3VjEzNVoiIGZpbGw9IiNEQURDRTAiPjwvcGF0aD48cGF0aCBkPSJNODEgMTM1QzgxIDEzMy44OTUgODEuODk1NCAxMzMgODMgMTMzSDg1Qzg2LjEwNDYgMTMzIDg3IDEzMy44OTUgODcgMTM1VjEzN0M4NyAxMzguMTA1IDg2LjEwNDYgMTM5IDg1IDEzOUg4M0M4MS44OTU0IDEzOSA4MSAxMzguMTA1IDgxIDEzN1YxMzVaIiBmaWxsPSIjREFEQ0UwIj48L3BhdGg+PHJlY3QgeD0iNDEiIHk9IjIzIiB3aWR0aD0iNjMiIGhlaWdodD0iMyIgcng9IjEuNSIgZmlsbD0iI2ZmZmZmZiIgc3R5bGU9ImZpbGwtb3BhY2l0eTogMC4zIj48L3JlY3Q+PHJlY3QgeD0iNDYiIHk9Ijc4IiB3aWR0aD0iMjIiIGhlaWdodD0iMTUiIHJ4PSIyIiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHBhdGggZD0iTTU1LjUgODZMNTYuNSA4Ny4zNUw1OCA4NS41TDYwIDg4SDU0TDU1LjUgODZaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTU0Ljc1IDg1LjVDNTQuMzM1OCA4NS41IDU0IDg1LjE2NDIgNTQgODQuNzVDNTQgODQuMzM1OCA1NC4zMzU4IDg0IDU0Ljc1IDg0QzU1LjE2NDIgODQgNTUuNSA4NC4zMzU4IDU1LjUgODQuNzVDNTUuNSA4NS4xNjQyIDU1LjE2NDIgODUuNSA1NC43NSA4NS41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjQ2IiB5PSIxMDAiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxNSIgcng9IjIiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNNTUuNSAxMDhMNTYuNSAxMDkuMzVMNTggMTA3LjVMNjAgMTEwSDU0TDU1LjUgMTA4WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxwYXRoIGQ9Ik01NC43NSAxMDcuNUM1NC4zMzU4IDEwNy41IDU0IDEwNy4xNjQgNTQgMTA2Ljc1QzU0IDEwNi4zMzYgNTQuMzM1OCAxMDYgNTQuNzUgMTA2QzU1LjE2NDIgMTA2IDU1LjUgMTA2LjMzNiA1NS41IDEwNi43NUM1NS41IDEwNy4xNjQgNTUuMTY0MiAxMDcuNSA1NC43NSAxMDcuNVoiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cmVjdCB4PSI3OCIgeT0iNzgiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxNSIgcng9IjIiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cGF0aCBkPSJNODcuNSA4Nkw4OC41IDg3LjM1TDkwIDg1LjVMOTIgODhIODZMODcuNSA4NloiIGZpbGw9IiNCREMxQzYiPjwvcGF0aD48cGF0aCBkPSJNODYuNzUgODUuNUM4Ni4zMzU4IDg1LjUgODYgODUuMTY0MiA4NiA4NC43NUM4NiA4NC4zMzU4IDg2LjMzNTggODQgODYuNzUgODRDODcuMTY0MiA4NCA4Ny41IDg0LjMzNTggODcuNSA4NC43NUM4Ny41IDg1LjE2NDIgODcuMTY0MiA4NS41IDg2Ljc1IDg1LjVaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHJlY3QgeD0iNzgiIHk9IjEwMCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjE1IiByeD0iMiIgZmlsbD0iI0U4RUFFRCI+PC9yZWN0PjxwYXRoIGQ9Ik04Ny41IDEwOEw4OC41IDEwOS4zNUw5MCAxMDcuNUw5MiAxMTBIODZMODcuNSAxMDhaIiBmaWxsPSIjQkRDMUM2Ij48L3BhdGg+PHBhdGggZD0iTTg2Ljc1IDEwNy41Qzg2LjMzNTggMTA3LjUgODYgMTA3LjE2NCA4NiAxMDYuNzVDODYgMTA2LjMzNiA4Ni4zMzU4IDEwNiA4Ni43NSAxMDZDODcuMTY0MiAxMDYgODcuNSAxMDYuMzM2IDg3LjUgMTA2Ljc1Qzg3LjUgMTA3LjE2NCA4Ny4xNjQyIDEwNy41IDg2Ljc1IDEwNy41WiIgZmlsbD0iI0JEQzFDNiI+PC9wYXRoPjxyZWN0IHg9IjQ0IiB5PSI5NSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cmVjdCB4PSI0NCIgeT0iOTciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxIiByeD0iMC41IiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHJlY3QgeD0iNDQiIHk9IjExNyIgd2lkdGg9IjI1IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cmVjdCB4PSI0NCIgeT0iMTE5IiB3aWR0aD0iMTciIGhlaWdodD0iMSIgcng9IjAuNSIgZmlsbD0iI0U4RUFFRCI+PC9yZWN0PjxyZWN0IHg9Ijc2IiB5PSI5NSIgd2lkdGg9IjI1IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cmVjdCB4PSI3NiIgeT0iOTciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxIiByeD0iMC41IiBmaWxsPSIjRThFQUVEIj48L3JlY3Q+PHJlY3QgeD0iNzYiIHk9IjExNyIgd2lkdGg9IjI1IiBoZWlnaHQ9IjEiIHJ4PSIwLjUiIGZpbGw9IiNFOEVBRUQiPjwvcmVjdD48cmVjdCB4PSI3NiIgeT0iMTE5IiB3aWR0aD0iMTciIGhlaWdodD0iMSIgcng9IjAuNSIgZmlsbD0iI0U4RUFFRCI+PC9yZWN0PjxyZWN0IHg9IjY3IiB5PSIxMyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjMiIHJ4PSIxLjUiIGZpbGw9IiM4MDg2OEIiPjwvcmVjdD48Y2lyY2xlIGN4PSI2Mi41IiBjeT0iMTQuNSIgcj0iMi41IiBmaWxsPSIjODA4NjhCIj48L2NpcmNsZT48L3N2Zz4=");
+}
+.gmail-layout-selected-check {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #1a73e8;
+  background: #fff;
+  border-radius: 50%;
+}
+.gmail-layout-preview-pane {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: 0 12px;
+  background: #fff;
+}
+.gmail-layout-preview-document {
+  width: 306px;
+  max-width: 100%;
+  min-height: 242px;
+  padding: 0 36px 24px;
+  margin: 0 auto;
+  background: #fff;
+  outline: none;
+}
+.gmail-layout-preview-brand {
+  display: inline-block;
+  width: 28px;
+}
+.gmail-layout-editing .gmail-layout-preview-pane {
+  padding-top: 24px;
+  background: #f8f9fa;
+}
+.gmail-layout-editing .gmail-layout-preview-document {
+  width: 600px;
+  padding: 24px 36px;
+  min-height: 300px;
+}
+.gmail-layout-picker > footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 96px;
+  padding: 28px 24px 28px 12px;
+}
+.gmail-layout-picker > footer > .gmail-dialog-primary {
+  width: 117.7421875px;
+  padding: 0 24px;
+}
+.gmail-layout-picker > footer > .gmail-dialog-text {
+  width: 69.25px;
+  padding: 0 12px;
+}
+.gmail-layout-default-styling {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 40px;
+  padding: 0 16px 0 12px;
+  margin-right: auto;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: #0b57d0;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-layout-palette-glyph {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAulBMVEUAAABEhPJChPRChfNDhfNChfRChPRBhfRAgP9AgO9ChvRChfRChfRChfVChfRAh/FAgP9ChfVChfRChfRChfRAivRBhfVChfRChfNBhPVAhPZAh/dAhPVBhfVChfRBhfRAhvJAhfRDhfREg/NDhPRChPRBhPRAgOpChfRChfRDhvVBhPNAifZChfRDhvRDhfNChPRChvVChfRBhvRDhfRAhfNAgPJChfVDhfRChfVChfVBhvRChfNDhfSgsJ9UAAAAPnRSTlMAPIuvx9+zQwgQj+v/858kBHvv+6cYw+OXTzggNEvTRygwb0Bbh7cM1/dnUxx3X2vnk6O7yywU28+rf7+bc8xyogoAAAFzSURBVHgB1dBFgipBFAXRi1vQXdKKu7vr/pf1lYfDvM+kNCVSP1AgGApHIuFoMBbXY4lkCkz65VX3Oa7HBf/tXXe8fwB8fn1nstlcPlgASBV1oxQBCt86KocAKjfzfYJfcXSu+gnUdCEehnRMUjUnya6JD/CrOlf//8YpQEOna/MDWo5O3tvQkdQFyJ2u6nnQ18kLfOiPAUDsdJWG8KmjZhsC+iOegsLp+oczgpjMN4QPUYOuc36VkjCWmYBrwcbSizCVmcHcQo2lz6El8wkLCzWWnoWUDPjHUGPpJVjKQPsYaiy9A1GZESQs1BzSnQIMZVZQ0n0ueO8ya6jonngQ2OioBlvdmg9awNbRUcLHL+lMfupxsF3oTAhCOulg2sHLwFcfvmWaaQBIz9ysruwgPddBBht2K9GCiP1ZBhZ6oORB+jCNs4SkHgl4QHRux1XQQ6UWwMe+vFAHWnossfPB7PTMa8h+9Xp6LlFbr0Z4oax+ot+kyCY5+7+4CAAAAABJRU5ErkJggg==")
+    center / 20px no-repeat;
+}
+.gmail-layout-styling-panel {
+  position: absolute;
+  bottom: 80px;
+  left: 24px;
+  width: 220px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px 2px #0003;
+}
+.gmail-layout-styling-panel h3 {
+  margin: 0 0 16px;
+  font:
+    500 14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-layout-styling-panel [role="group"] {
+  display: flex;
+  gap: 12px;
+}
+.gmail-layout-styling-panel [role="group"] > button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+}
+.gmail-layout-styling-panel [aria-pressed="true"] {
+  outline: 2px solid #0b57d0;
+  outline-offset: 2px;
+}
+.gmail-compose-menu-emoji {
+  width: 370px;
+  height: 340px;
+  padding: 0;
+  border-radius: 8px;
+}
+.gmail-emoji-picker {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px 0 0;
+}
+.gmail-emoji-search {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 32px;
+  flex: none;
+  padding: 0 15px 0 3px;
+  margin: 0 8px;
+  border: 1px solid #c4c7c5;
+  border-radius: 16px;
+}
+.gmail-emoji-search input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-emoji-search input::placeholder {
+  color: #444746;
+  opacity: 1;
+}
+.gmail-emoji-categories {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  align-items: center;
+  flex: none;
+  height: 36px;
+  margin: 16px 11px 8px 9.90625px;
+}
+.gmail-emoji-categories > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: 0;
+  background: transparent;
+  color: #444746;
+}
+.gmail-emoji-categories > button[aria-selected="true"] {
+  color: #0b57d0;
+}
+.gmail-emoji-categories > button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  bottom: 0;
+  background: #0b57d0;
+}
+.gmail-emoji-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0;
+  margin-left: 4px;
+  scrollbar-width: none;
+}
+.gmail-emoji-glyph {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  mask-size: 24px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+.gmail-emoji-content h3 {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 0;
+  padding: 0 6px;
+  color: #444746;
+  font:
+    500 11px/16px "Google Sans",
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+}
+.gmail-emoji-content p {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 0;
+  padding: 0 6px;
+  color: #444746;
+  font:
+    14px/20px "Google Sans",
+    Arial,
+    sans-serif;
+}
+.gmail-emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  gap: 0;
+}
+.gmail-emoji-grid > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+.gmail-emoji-grid > button > img {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.gmail-emoji-grid > button:hover {
+  background: #f0f4f9;
+}
+.gmail-composer [data-tooltip]::after,
+.gmail-formatting-row [data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 140;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #3c4043;
+  color: #fff;
+  font:
+    500 12px/16px "Google Sans",
+    Arial,
+    sans-serif;
+  white-space: nowrap;
+  visibility: hidden;
+  pointer-events: none;
+}
+.gmail-composer [data-tooltip]:hover::after,
+.gmail-formatting-row [data-tooltip]:hover::after {
+  visibility: visible;
+  transition: visibility 0s 800ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gmail-compose-window-controls > button {
+    transition: none;
+  }
+}
+@media (max-width: 900px) {
+  .composer.gmail-composer.composer-fullscreen {
+    left: 24px;
+    right: 24px;
+    width: calc(100vw - 48px);
+  }
+}
+@media (max-width: 620px) {
+  .composer.gmail-composer,
+  .composer.gmail-composer.composer-docked,
+  .composer.gmail-composer.composer-fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+  .composer.gmail-composer.composer-minimized {
+    top: auto;
+    left: auto;
+    right: 15px;
+    bottom: 0;
+    width: min(328px, calc(100vw - 30px));
+    height: 40px;
+  }
+  .gmail-compose-header {
+    border-radius: 0;
+  }
+  .gmail-composer .gmail-compose-content {
+    flex: 1;
+  }
+  .gmail-composer .gmail-compose-scroll {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  .gmail-composer .gmail-compose-body-wrap {
+    display: flex;
+    flex: 1 0 auto;
+  }
+  .gmail-composer .gmail-compose-body-wrap > .gmail-compose-editor {
+    min-height: 0;
+    flex: 1;
+  }
+  .gmail-composer .gmail-compose-subject {
+    font-size: 16px;
+  }
+  .gmail-compose-tools {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .gmail-compose-footer {
+    gap: 0;
+  }
+  .gmail-compose-confidential-banner {
+    gap: 12px;
+    padding: 12px;
+  }
+  .gmail-confidential-dialog {
+    height: auto;
+    min-height: 464px;
+    overflow: auto;
+  }
+  .gmail-confidential-dialog .gmail-dialog-actions {
+    position: static;
+    margin-top: 24px;
+  }
+  .gmail-expiration-row {
+    flex-wrap: wrap;
+  }
+  .gmail-expiration-control {
+    width: 100%;
+  }
+  .gmail-confidential-passcode [role="radiogroup"] {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .gmail-schedule-custom-fields {
+    flex-direction: column;
+  }
+  .gmail-schedule-date-inputs {
+    width: 100%;
+    flex-direction: row;
+  }
+  .gmail-layout-choices {
+    flex-wrap: wrap;
+  }
+  .gmail-compose-file-picker > header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 16px 16px 12px;
+  }
+  .gmail-compose-file-picker h2 {
+    flex: 1;
+    min-width: 0;
+    padding-right: 28px;
+    font-size: 20px;
+  }
+  .gmail-compose-file-picker .gmail-picker-search {
+    flex-basis: 100%;
+    margin-top: 12px;
+  }
+  .gmail-picker-tabs {
+    overflow-x: auto;
+    padding: 0 8px;
+  }
+  .gmail-picker-tabs > button {
+    flex: none;
+  }
+  .gmail-photo-sources {
+    width: 160px;
+  }
+  .gmail-photo-sources > button {
+    width: 144px;
+    padding: 0 12px;
+    gap: 12px;
+  }
+  .gmail-photo-empty {
+    top: 140px;
+    padding: 0 8px;
+  }
+  .gmail-photo-empty-art {
+    width: 144px;
+    height: 144px;
+    background-size: 144px;
+  }
+  .gmail-contacts-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    height: auto;
+    padding: 8px 16px;
+  }
+  .gmail-contacts-controls > label,
+  .gmail-contacts-controls > .gmail-contacts-manage,
+  .gmail-contacts-controls > select {
+    position: static;
+  }
+  .gmail-contacts-controls > select {
+    width: 100%;
+  }
+  .gmail-contacts-empty {
+    top: 100px;
+  }
+  .gmail-layout-gallery {
+    width: 100%;
+    flex: 1;
+    grid-template-columns: repeat(2, 144px);
+    justify-content: center;
+  }
+  .gmail-layout-picker-main:not(.gmail-layout-editing)
+    .gmail-layout-preview-pane {
+    display: none;
+  }
+  .gmail-layout-picker > footer {
+    padding: 16px 12px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .gmail-layout-picker > footer > .gmail-layout-default-styling {
+    width: 100%;
+  }
+}
+@media print {
+  body:has([data-print-compose]) * {
+    visibility: hidden;
+  }
+  .gmail-composer[data-print-compose],
+  .gmail-composer[data-print-compose] * {
+    visibility: visible;
+  }
+  .composer.gmail-composer[data-print-compose] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    box-shadow: none;
+  }
+  .gmail-composer[data-print-compose] .gmail-compose-header,
+  .gmail-composer[data-print-compose] .gmail-compose-footer,
+  .gmail-composer[data-print-compose] .gmail-formatting-row {
+    display: none;
+  }
+}

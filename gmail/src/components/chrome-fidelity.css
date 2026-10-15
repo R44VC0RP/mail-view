@@ -1,0 +1,920 @@
+.gmail-header .gmail-logo {
+  margin-left: 22px;
+}
+
+.gmail-header .gmail-header-controls {
+  gap: 8px;
+}
+
+.gmail-header .gmail-status-button {
+  gap: 4px;
+  padding: 16px 8px;
+  margin-right: 4px;
+  min-width: 101.1875px;
+  font-weight: 500;
+  color: #c4c7c5;
+  background: rgba(241, 243, 244, 0.24);
+}
+
+.gmail-header .gmail-status-button .gmail-status-dot {
+  margin: 0 4px;
+}
+
+.gmail-header .gmail-status-dot-active {
+  background: #81c995;
+}
+
+.gmail-header .gmail-account-button {
+  padding-left: 16px;
+  margin-left: 4px;
+  border-color: #e3e3e3;
+  border-radius: 24px;
+}
+
+.gmail-header .gmail-account-org {
+  width: 78px;
+  height: 32px;
+  background: #fff;
+}
+
+.gmail-sidebar .gmail-compose-button {
+  width: 138.4375px;
+  gap: 0;
+  padding: 0 24px 0 0;
+  line-height: 32px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  transition: box-shadow 0.08s linear;
+}
+
+.gmail-sidebar .gmail-compose-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 24px;
+}
+
+.gmail-sidebar .gmail-compose-button:hover {
+  background: #fff;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+.gmail-sidebar .gmail-nav-item,
+.gmail-sidebar .gmail-label-link {
+  padding-right: 12px;
+}
+
+/* Compositor paint-chain parity with the captured Gmail sidebar
+   (bench/pixel-diagnosis.json): the source rasterizes each glyph on its own
+   promoted layer and applies the 0.7 dim as a group INSIDE that layer. Baking
+   the dim into the fill color's alpha (rgba) quantizes at a different pipeline
+   point and the strict pixel benchmark measures ±1 on every anti-aliased
+   pixel. `will-change` here reproduces that captured paint chain exactly; it
+   is NOT a generic performance optimization — do not remove or widen it. */
+.gmail-sidebar .gmail-nav-item > .icon,
+.gmail-sidebar .gmail-category-caret .icon,
+.gmail-sidebar .gmail-label-caret .icon {
+  will-change: transform;
+}
+
+.gmail-sidebar .gmail-nav-item > .icon,
+.gmail-sidebar .gmail-category-caret,
+.gmail-sidebar .gmail-label-caret {
+  color: #fff;
+}
+
+.gmail-sidebar .gmail-nav-item:not(.gmail-nav-item-active) > .icon rect,
+.gmail-sidebar .gmail-category-caret .icon rect,
+.gmail-sidebar .gmail-label-caret .icon rect {
+  opacity: 0.7;
+}
+
+.gmail-sidebar .gmail-label-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gmail-sidebar .gmail-nav-item-active > .icon,
+.gmail-sidebar .gmail-nav-item-active .gmail-label-icon {
+  color: #fff;
+}
+
+.gmail-sidebar .gmail-nav-item-active {
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* The selected row is its own layer in the source; its two-layer glyph must
+   paint sequentially against the row surface inside that layer, so the icon
+   itself stays unpromoted (Icon renders the two background paints natively). */
+.gmail-sidebar .gmail-nav-item-active {
+  will-change: transform;
+}
+
+.gmail-sidebar .gmail-nav-item-active > .icon {
+  will-change: auto;
+}
+
+.gmail-sidebar .gmail-nav-item-active .gmail-label-link {
+  font-weight: 700;
+}
+
+.gmail-sidebar .gmail-category-caret {
+  width: 20px;
+  left: -1px;
+}
+
+.gmail-sidebar .gmail-label-caret {
+  width: 20px;
+  height: 20px;
+  margin-left: -1px;
+}
+
+.gmail-sidebar .gmail-labels-heading {
+  padding: 0 8px 0 14px;
+}
+
+.gmail-sidebar .gmail-labels-heading .gmail-create-label {
+  color: #fff;
+  margin-right: -6px;
+}
+
+.gmail-sidebar-collapsed .gmail-compose-button {
+  width: 48px;
+  padding: 0;
+}
+
+.gmail-sidebar-collapsed .gmail-compose-icon {
+  display: flex;
+  flex-basis: 48px;
+}
+
+.gmail-sidebar-collapsed .gmail-compose-text {
+  display: none;
+}
+
+.mail-pane .mail-list,
+.mail-pane .mail-toolbar {
+  background: var(--surface);
+}
+
+.mail-list .mail-row--unread:not(.mail-row--selected) .mail-row-hover-actions {
+  background: var(--surface);
+}
+
+.mail-list .mail-row-content {
+  height: 20px;
+  line-height: 20px;
+}
+
+/* Top alignment avoids the overflow-hidden badge's bottom-edge inline baseline. */
+.mail-list .mail-row-label {
+  vertical-align: top;
+  margin-top: 1px;
+  border-radius: 4px;
+}
+
+.mail-list .mail-row:hover {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.2), inset -1px 0 0 rgba(255, 255, 255, 0.2), 0 0 4px 0 rgba(95, 99, 104, 0.6), 0 0 6px 2px rgba(95, 99, 104, 0.6);
+}
+
+.mail-list:focus {
+  outline: none;
+}
+
+.mail-list:focus-visible .mail-row--focused {
+  z-index: 1;
+  box-shadow: inset 3px 0 0 #a8c7fa, inset 0 0 0 1px #8ab4f8;
+}
+
+.mail-list .mail-row-checkbox,
+.mail-list .mail-row-star {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.mail-list .mail-row:hover .mail-row-checkbox,
+.mail-list .mail-row:hover .mail-row-star,
+.mail-list .mail-row:is(:focus-visible, :has(:focus-visible)) .mail-row-checkbox,
+.mail-list .mail-row:is(:focus-visible, :has(:focus-visible)) .mail-row-star,
+.mail-list .mail-row-checkbox[aria-checked="true"] {
+  color: #fff;
+}
+
+.mail-list .mail-row .mail-row-star--active,
+.mail-list .mail-row:hover .mail-row-star--active,
+.mail-list .mail-row:is(:focus-visible, :has(:focus-visible)) .mail-row-star--active {
+  color: #f4b400;
+}
+
+.mail-list .mail-row-date {
+  flex: 0 0 110px;
+  width: 110px;
+  min-width: 110px;
+  padding-left: 0;
+  gap: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mail-list .mail-row-file-indicator {
+  display: flex;
+  flex: 0 0 38px;
+  justify-content: flex-start;
+  padding-left: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mail-list .mail-row-date > span:last-child {
+  flex: 0 0 56px;
+  text-align: right;
+}
+
+.mail-list .mail-row--unread .mail-row-date {
+  color: #fff;
+}
+
+.mail-list .mail-row-draft {
+  color: #dd4b39;
+}
+
+.mail-list .mail-row-hover-actions .icon-button {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mail-list .mail-row:hover .mail-row-content,
+.mail-list .mail-row:is(:focus-visible, :has(:focus-visible)) .mail-row-content {
+  margin-right: 66px;
+}
+
+.mail-list .mail-row:has(.mail-row-unsubscribe):hover .mail-row-content,
+.mail-list .mail-row:has(.mail-row-unsubscribe):is(:focus-visible, :has(:focus-visible)) .mail-row-content {
+  margin-right: 162px;
+}
+
+.mail-list .mail-row-grip {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  visibility: hidden;
+  /* inbox-context-menu.json: oZ-x3::before, drag_indicator_white_20dp.png. */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93DmAAAAkUlEQVR4Ae3TMQ6CQBCGUbHAi6jADQS8/wkI0QKu8qxItpkEsnbsK/9uMvkuxbmptFpVsB3laQazZ7jtp7barOpg288oNQTbft5SY7Tt5maxWdyi7QCtCcyaeDtEpdOp4i1fKaWUUkoppbibweTxn1IWm4/8UvRSr/xSBqk+v5T0vK86q5T4AbmlXDWauJTivH50dvydt3Hy0QAAAABJRU5ErkJggg==") center / 20px 20px no-repeat;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.mail-list .mail-row:hover .mail-row-grip {
+  visibility: visible;
+}
+
+.mail-list .mail-row-unsubscribe {
+  right: 176px;
+  height: 20px;
+  padding: 0 8px;
+  line-height: 18px;
+  border-color: #888;
+  color: #fff;
+}
+
+.mail-list .mail-row-attachment-chips {
+  position: relative;
+  top: -3px;
+  padding-top: 0;
+  padding-left: 278px;
+  padding-bottom: 12px;
+}
+
+.mail-list .mail-attachment-chip {
+  height: 30px;
+  max-width: 160px;
+  padding: 0 12px;
+  border-radius: 15px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mail-toolbar.mail-toolbar {
+  padding-left: 16px;
+  padding-right: 22px;
+}
+
+.mail-toolbar.mail-toolbar .mail-toolbar-checkbox {
+  width: 20px;
+  border-radius: 4px 0 0 4px;
+}
+
+.mail-toolbar .mail-toolbar-dropdown {
+  width: 20px;
+  height: 40px;
+  border-radius: 0 4px 4px 0;
+}
+
+.mail-toolbar .mail-toolbar-select {
+  margin-right: 10px;
+}
+
+.mail-toolbar .mail-toolbar-range {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  height: 36px;
+  background: transparent;
+  color: inherit;
+  font-variant-numeric: normal;
+}
+
+.mail-toolbar button.mail-toolbar-range:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mail-toolbar .mail-toolbar-discard {
+  height: 36px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+}
+
+.mail-toolbar .mail-toolbar-discard:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mail-menu.mail-menu--pagination {
+  width: 143.3671875px;
+}
+
+.mail-menu--pagination .mail-menu-item {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.gmail-header .gmail-support-popover {
+  position: fixed;
+  right: auto;
+  width: 220.3515625px;
+  padding: 6px 0;
+  border-radius: 4px;
+  background: #fff;
+  color: #202124;
+  font: 14px/20px var(--font);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+}
+
+.gmail-header .gmail-support-popover > button {
+  display: block;
+  height: 32px;
+  padding: 6px 30px;
+  white-space: nowrap;
+}
+
+.gmail-header .gmail-support-popover > button:hover,
+.gmail-header .gmail-support-popover > button:focus {
+  background: #eee;
+  outline: none;
+}
+
+.gmail-header .gmail-support-divider {
+  height: 1px;
+  margin: 7px 0;
+  background: #ebebeb;
+}
+
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-select {
+  margin-right: 8px;
+}
+
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-button {
+  width: 44px;
+}
+
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-button[aria-label="More"],
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-pagination .mail-toolbar-button {
+  width: 40px;
+}
+
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-divider {
+  margin-left: 7px;
+  margin-right: 8px;
+}
+
+.mail-toolbar.mail-toolbar--selection .mail-toolbar-discard {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.mail-toolbar .mail-toolbar-range[aria-disabled="true"] {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  cursor: default;
+}
+
+.mail-menu.mail-menu {
+  padding: 6px 0;
+}
+
+.mail-menu.mail-menu:focus {
+  outline: none;
+}
+
+.mail-menu.mail-menu--context {
+  width: 245.0859375px;
+}
+
+.mail-menu.mail-menu--select {
+  width: 158.9609375px;
+}
+
+.mail-menu.mail-menu--more {
+  width: 256px;
+}
+
+.mail-menu.mail-menu--move,
+.mail-menu.mail-menu--label {
+  width: 307px;
+}
+
+.mail-menu.mail-menu--move {
+  overflow: visible;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.mail-menu.mail-menu--snooze {
+  width: 256px;
+  padding: 8px 0;
+}
+
+.mail-menu-host .mail-menu .mail-menu-item {
+  padding: 6px 48px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-item:focus {
+  background: #eee;
+  outline: none;
+}
+
+.mail-menu-host .mail-menu .mail-menu-item:disabled {
+  background: transparent;
+  color: #ccc;
+  cursor: default;
+  opacity: 1;
+}
+
+.mail-menu-host .mail-menu .mail-menu-icon {
+  color: #444746;
+}
+
+.mail-menu-host .mail-menu .mail-menu-caret {
+  right: 22px;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  color: #000;
+  opacity: 0.5;
+}
+
+.mail-menu-host .mail-menu .mail-menu-item[aria-expanded="true"] .mail-menu-caret {
+  opacity: 1;
+}
+
+.mail-menu-host .mail-menu .mail-menu-divider {
+  margin: 6px 0;
+  background: #ebebeb;
+}
+
+.mail-menu-host .mail-menu .mail-menu-heading {
+  box-sizing: border-box;
+  height: 32px;
+  padding: 6px 8px;
+  color: #202124;
+}
+
+.mail-menu-host .mail-menu .mail-menu-search {
+  height: 29px;
+  margin: 0 8px 16px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-search input {
+  height: 29px;
+  padding: 0 36px 0 0;
+  border: 0;
+  border-bottom: 1px solid #dadce0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.mail-menu-host .mail-menu .mail-menu-search input:focus {
+  border-bottom: 2px solid #1a73e8;
+  box-shadow: none;
+}
+
+.mail-menu-host .mail-menu .mail-menu-search > .icon {
+  right: 8px;
+  top: 7px;
+  color: #444746;
+}
+
+.mail-menu-host .mail-menu .mail-menu-labels {
+  box-sizing: border-box;
+  height: 248px;
+  max-height: 248px;
+  padding: 4px 0;
+  overflow-y: scroll;
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+.mail-menu-host .mail-menu .mail-menu-labels::-webkit-scrollbar {
+  width: 10px;
+  background: #fff;
+}
+
+.mail-menu-host .mail-menu .mail-menu-labels::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border: 1px solid #b7b7b7;
+}
+
+.mail-menu-host .mail-menu--move .mail-menu-labels {
+  height: 240px;
+  max-height: 240px;
+  padding: 0;
+}
+
+.mail-menu-host .mail-menu .mail-menu-label-item {
+  padding-right: 48px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-label-item .mail-menu-icon {
+  left: 20px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-move-footer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 77px;
+  padding: 6px 0;
+  border-top: 1px solid #ebebeb;
+  border-radius: 0 0 4px 4px;
+  background: #fff;
+  box-shadow: inherit;
+  clip-path: inset(0 -24px -24px -24px);
+}
+
+.mail-menu-host .mail-menu--snooze .mail-menu-heading {
+  padding: 6px 24px;
+  font-weight: 500;
+  color: #5f6368;
+}
+
+.mail-menu-host .mail-menu .mail-menu-snooze-item {
+  padding: 6px 24px;
+  gap: 8px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-snooze-item small {
+  font-size: 14px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-pick-date {
+  padding-left: 56px;
+  padding-right: 24px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-pick-date .mail-menu-icon {
+  left: 24px;
+}
+
+.mail-menu-host .mail-menu .mail-menu-hint {
+  padding: 6px 48px;
+  color: #5f6368;
+  font-size: 14px;
+  line-height: 20px;
+  font-style: italic;
+}
+
+.mail-menu-host .mail-snooze-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+  pointer-events: auto;
+}
+
+.mail-menu-host .mail-snooze-dialog {
+  width: 511.5px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border-radius: 28px;
+  background: #fff;
+  color: #202124;
+  color-scheme: light;
+  outline: none;
+}
+
+.mail-snooze-dialog h2 {
+  margin: 24px 24px 32px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.mail-snooze-dialog .mail-snooze-body {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 1fr);
+  gap: 40px;
+  padding: 0 28px 0 20px;
+}
+
+.mail-snooze-dialog .mail-snooze-month {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+.mail-snooze-dialog .mail-snooze-month > span {
+  flex: 1;
+}
+
+.mail-snooze-dialog .mail-snooze-month > button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: transparent;
+  color: #5f6368;
+}
+
+/* Snooze uses the captured system_gm chevrons, not the gm3 toolbar glyphs. */
+.mail-snooze-dialog .mail-snooze-month > button .icon {
+  visibility: hidden;
+}
+
+.mail-snooze-dialog .mail-snooze-month > button::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  background: center / 20px 20px no-repeat;
+  opacity: 0.7;
+}
+
+.mail-snooze-dialog .mail-snooze-month > button[aria-label="Previous month"]::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93DmAAAAaElEQVR4Ae3VtQGAQBBE0Ylw778W3B0KAq4AwsH5k79wFzv9/SlixGQEiKEyuVWsgE7kxHrYt+NUNpd9hzPYXP0IbmZzHkAH2aTNJnsemT2AVPGTMCBi3uySRcrHkQUs9qMnpgj07+NtK8Jw/0l4JwkAAAAASUVORK5CYII=");
+}
+
+.mail-snooze-dialog .mail-snooze-month > button[aria-label="Next month"]::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAQAAAAm93DmAAAAZ0lEQVR4Ae3VAQaAMBhH8QfZIkX3P8lgRCIMXWhdIMBDs70D/OD7+DPqvkhEbOYgE5BauahUj9wo1N7J2SZPj3xscm+OXGzy/i0pgxrnH8V/7o3SI5dtLjTASTOaCObQJybE4hc3Gr1f1nEAsj8ngQAAAABJRU5ErkJggg==");
+}
+
+.mail-snooze-dialog .mail-snooze-weekdays,
+.mail-snooze-dialog .mail-snooze-days > [role="row"] {
+  display: grid;
+  grid-template-columns: repeat(7, 32px);
+  height: 32px;
+  font-size: 12px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.mail-snooze-dialog .mail-snooze-weekdays {
+  font-weight: 500;
+}
+
+.mail-snooze-dialog .mail-snooze-days button {
+  width: 28px;
+  height: 28px;
+  margin: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #202124;
+  font: 12px/28px var(--font);
+}
+
+.mail-snooze-dialog .mail-snooze-days button:disabled,
+.mail-snooze-dialog .mail-snooze-days .mail-snooze-day-outside {
+  color: #9aa0a6;
+  opacity: 1;
+}
+
+.mail-snooze-dialog .mail-snooze-days .mail-snooze-day-selected {
+  background: #0b57d0;
+  color: #fff;
+  font-weight: 500;
+}
+
+.mail-snooze-dialog .mail-snooze-days button:hover:not(:disabled):not(.mail-snooze-day-selected),
+.mail-snooze-dialog .mail-snooze-month > button:hover {
+  background: #f1f3f4;
+}
+
+.mail-snooze-dialog .mail-snooze-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.mail-snooze-dialog .mail-snooze-fields input {
+  width: 100%;
+  height: 56px;
+  padding: 0 15px;
+  border: 1px solid #747775;
+  border-radius: 2px;
+  outline: none;
+  background: #fff;
+  color: #202124;
+  font-size: 16px;
+}
+
+.mail-snooze-dialog .mail-snooze-fields input:focus {
+  border: 2px solid #0b57d0;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.mail-snooze-dialog .mail-snooze-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 40px 24px 24px;
+}
+
+.mail-snooze-dialog .mail-snooze-footer button {
+  height: 40px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mail-snooze-dialog .mail-snooze-footer .mail-snooze-cancel {
+  width: 72px;
+  padding: 0;
+  background: transparent;
+  color: #0b57d0;
+}
+
+.mail-snooze-dialog .mail-snooze-save {
+  width: 80px;
+  background: #0b57d0;
+  color: #fff;
+}
+
+.mail-snooze-dialog .mail-snooze-save:disabled {
+  background: #e3e3e3;
+  color: #9aa0a6;
+  opacity: 1;
+}
+
+@media (max-width: 520px) {
+  .mail-snooze-dialog .mail-snooze-body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 24px;
+    padding: 0 24px;
+  }
+
+  .mail-snooze-dialog .mail-snooze-fields {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .mail-snooze-dialog .mail-snooze-footer {
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .gmail-header .gmail-header-controls {
+    gap: 0;
+  }
+
+  .gmail-header .gmail-account-button {
+    padding: 4px;
+    margin-left: 0;
+    border-color: transparent;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .mail-list .mail-row-attachment-chips {
+    padding-left: 238px;
+  }
+}
+
+@media (max-width: 700px) {
+  .mail-toolbar.mail-toolbar {
+    padding-left: 16px;
+    padding-right: 4px;
+  }
+
+  .mail-list .mail-row-grip {
+    display: none;
+  }
+
+  .mail-list .mail-row-date {
+    flex: 0 0 80px;
+    width: 80px;
+    min-width: 80px;
+  }
+
+  .mail-list .mail-row-file-indicator {
+    flex-basis: 24px;
+    padding-left: 4px;
+  }
+
+  .mail-list .mail-row-attachment-chips {
+    padding-left: 64px;
+  }
+
+  .mail-list .mail-row:hover .mail-row-content,
+  .mail-list .mail-row:is(:focus-visible, :has(:focus-visible)) .mail-row-content,
+  .mail-list .mail-row:has(.mail-row-unsubscribe):hover .mail-row-content,
+  .mail-list .mail-row:has(.mail-row-unsubscribe):is(:focus-visible, :has(:focus-visible)) .mail-row-content {
+    margin-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gmail-sidebar .gmail-compose-button {
+    transition: none;
+  }
+}
+
+/* Compositor/native-paint parity (bench/pixel-diagnosis.json,
+   bench/reference/pixel-subgeometry.json). The source promotes the lockup IMG
+   and the compose button onto their own compositor layers (2x raster + box
+   downsample under CSS-scale capture); unpromoted content re-rasterizes at 1x
+   and every anti-aliased pixel lands ±1 off. `will-change` reproduces that
+   paint chain — it is not an optimization. Glyphs the source paints as plain
+   PNG backgrounds are painted the same way here: the SVG alpha-mask +
+   currentColor path quantizes differently and discards the compose pen's
+   non-uniform edge RGB (30 distinct edge colors in the source asset). Hover,
+   checked, and starred states keep the original SVG rendering. */
+.gmail-header .gmail-logo img {
+  will-change: transform;
+}
+
+.gmail-sidebar .gmail-compose-button {
+  will-change: transform;
+}
+
+.gmail-compose-icon .icon rect {
+  display: none;
+}
+
+.gmail-compose-icon .icon {
+  background: url(/icons/compose.png) 50% 50% / 24px 24px no-repeat;
+}
+
+.mail-toolbar-button[aria-label="Refresh"] .icon rect,
+.mail-toolbar-button[aria-label="More"] .icon rect {
+  display: none;
+}
+
+.mail-toolbar-button[aria-label="Refresh"] .icon {
+  background: url(/icons/refresh.png) 50% 50% / 20px 20px no-repeat;
+  opacity: 0.7;
+}
+
+.mail-toolbar-button[aria-label="More"] .icon {
+  background: url(/icons/more.png) 50% 50% / 20px 20px no-repeat;
+  opacity: 0.7;
+}
+
+.mail-list .mail-row:not(:hover):not(:is(:focus-visible, :has(:focus-visible))) .mail-row-checkbox:not([aria-checked="true"]) .icon rect,
+.mail-list .mail-row:not(:hover):not(:is(:focus-visible, :has(:focus-visible))) .mail-row-star:not(.mail-row-star--active) .icon rect {
+  display: none;
+}
+
+.mail-list .mail-row:not(:hover):not(:is(:focus-visible, :has(:focus-visible))) .mail-row-checkbox:not([aria-checked="true"]) .icon {
+  background: url(/icons/checkbox.png) 50% 50% / 20px 20px no-repeat;
+  opacity: 0.32;
+}
+
+.mail-list .mail-row:not(:hover):not(:is(:focus-visible, :has(:focus-visible))) .mail-row-star:not(.mail-row-star--active) .icon {
+  background: url(/icons/star.png) 50% 50% / 20px 20px no-repeat;
+  opacity: 0.32;
+}
+.mail-toolbar--selection .mail-toolbar-button[aria-label="More"] {
+  margin-left: -2px;
+}
